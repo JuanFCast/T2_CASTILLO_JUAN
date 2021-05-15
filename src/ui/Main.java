@@ -20,8 +20,49 @@ public class Main{
 		System.out.println("------------------------------------------");
 		System.out.println("-----BIENVENID@ AL CENTRO VETERINARIO-----");
 		System.out.println("------------------------------------------");
-		t2.showMenu();
-		//t2.answerOption(showMenu());
+
+		int option;
+		do{
+			option = t2.showMenu();
+			
+			switch(option){
+				case 1:
+				System.out.println("(1) A\u00f1adir un nuevo veterinario");
+				break;
+
+				case 2:
+				System.out.println("(2) Eliminar un veterinario");
+				break;
+
+				case 3:
+				System.out.println("(3) Registrar una mascota");
+				break;
+
+				case 4:
+				System.out.println("(4) Retirar una mascota\n");
+				break;
+				case 5:
+				System.out.println("(5) Iniciar una consulta");
+				break;
+
+				case 6:
+				//ppal.showVets();
+				break;
+
+				case 7:
+				//ppal.showPets();
+				break;
+
+				case 8:
+				//ppal.showOrderPets();
+				break;
+
+				default:
+				option = 0;
+				break;
+			}
+			
+		}while(option != 0);
 	}
 	
 	//Method Menu
@@ -44,7 +85,6 @@ public class Main{
 		return option;
     	
 	}
-
 
 
 

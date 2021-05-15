@@ -22,15 +22,27 @@ public class Veterinary{
 		status = "Available";
 		this.petsAttended = 0;
 
-		
-
 	}
+
+	//get 
+	public String getIdVeterinary(){
+		return idVeterinary;
+	}
+
+
+	//set
+	public void setiIdVeterinary(String idVeterinary){
+		this.idVeterinary = idVeterinary;
+	} 
 
 
 	//to String
 	public String toString(){
 
-		String answer = "";
+		String answer = "Numero de identificacion: " + idNumber + 
+		"Nombres : " + name +
+		"Apellidos: " + lastName + 
+		"Registro unico veterinario" + idVeterinary;
 
 		
 		return answer;

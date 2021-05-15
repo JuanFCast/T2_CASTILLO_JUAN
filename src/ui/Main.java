@@ -86,7 +86,7 @@ public class Main{
     	
 	}
 
-
+	
 
 	public void addVeterinay(){
 		String idNumber = "", name = "", lastName = "", idVeterinary = "";

@@ -18,9 +18,23 @@ public class PetOwner{
 		this.phone = phone;
 		this.address = address;
 
-		
-
 	}
+
+
+
+	//get 
+	public String getIdNumber(){
+		return idNumber;
+	}
+
+
+
+	//set
+	public void setIdNumber(String idNumber){
+		this.idNumber = idNumber;
+	}
+	
+	
 
 
 	//to String

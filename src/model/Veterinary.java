@@ -5,16 +5,22 @@ public class Veterinary{
 	private String idNumber;
 	private String name;
 	private String lastName;
-	private String single_Veterinary_Record;
+	private String idVeterinary;
 	private String status;
+	private int petsAttended;
 
 	// relaciones
 
 
 
 	//constructor
-	public Veterinary(String idNumber, String name, String lastName, String single_Veterinary_Record, String status){
-
+	public Veterinary(String idNumber, String name, String lastName, String idVeterinary){
+		this.idNumber = idNumber; 
+		this.name = name;
+		this.lastName = lastName;
+		this.idVeterinary = idVeterinary;
+		status = "Available";
+		this.petsAttended = 0;
 
 		
 

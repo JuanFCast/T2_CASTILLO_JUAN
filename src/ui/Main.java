@@ -27,7 +27,7 @@ public class Main{
 			
 			switch(option){
 				case 1:
-				System.out.println("(1) A\u00f1adir un nuevo veterinario");
+				t2.addVeterinay();
 				break;
 
 				case 2:
@@ -46,15 +46,15 @@ public class Main{
 				break;
 
 				case 6:
-				//ppal.showVets();
+				
 				break;
 
 				case 7:
-				//ppal.showPets();
+				
 				break;
 
 				case 8:
-				//ppal.showOrderPets();
+				
 				break;
 
 				default:
@@ -71,7 +71,7 @@ public class Main{
 
     	System.out.println("MENU DE ACTIVIDADES\n");
         System.out.println("A continuacion selecciona una opcion:");
-		System.out.println("(1) Añadir un nuevo veterinario");
+		System.out.println("(1) A\u00f1adir un nuevo veterinario");
 		System.out.println("(2) Eliminar un veterinario");
 		System.out.println("(3) Registrar una mascota");
 		System.out.println("(4) Retirar una mascota\n");
@@ -84,6 +84,28 @@ public class Main{
 		
 		return option;
     	
+	}
+
+
+
+	public void addVeterinay(){
+		String idNumber = "", name = "", lastName = "", idVeterinary = "";
+		
+		System.out.println("Porfavor ingrese los siguientes datos del Veterinario:\n");
+		System.out.print("Numero de identificacion: ");
+		idNumber = sc.nextLine();
+
+		System.out.print("Nombres: ");
+		name = sc.nextLine();
+
+		System.out.print("Apellidos: ");
+		lastName = sc.nextLine();
+
+		System.out.print("Registro unico veterinario: ");
+		idVeterinary = sc.nextLine();
+		
+		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary));
+		
 	}
 
 

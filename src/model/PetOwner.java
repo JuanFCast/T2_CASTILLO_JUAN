@@ -13,7 +13,10 @@ public class PetOwner{
 
 	//constructor
 	public PetOwner(String idNumber, String name, String phone, String address){
-
+		this.idNumber = idNumber;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
 
 		
 

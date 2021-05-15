@@ -7,8 +7,8 @@ public class Pet{
 	private String symptoms;
 
 	// relaciones
+	//private Priority priority;
 	private Specie specie;
-	private Priority priority;
 	private PetOwner petOwner;
 	private ConsultationStatus consultationStatus;
 	private Veterinary veterinary;
@@ -16,12 +16,12 @@ public class Pet{
 
 
 	//constructor
-	public Pet(String name, int year, String symptoms, Specie specie, Priority priority, PetOwner petOwner, ConsultationStatus consultationStatus, Veterinary veterinary){
+	public Pet(String name, int year, String symptoms, Specie specie, PetOwner petOwner, ConsultationStatus consultationStatus, Veterinary veterinary){
+		//this.priority = priority;
 		this.name = name;
 		this.year = year;
 		this.symptoms = symptoms;
 		this.specie = specie;
-		this.priority = priority;
 		this.petOwner = petOwner;
 		this.consultationStatus = consultationStatus;
 		this.veterinary = veterinary;

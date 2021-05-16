@@ -64,13 +64,13 @@ public class EmergencyCenter{
 	public void deleteVeterinary(String idNumber){
 		boolean sentinel = false;
 		for(int i = 0; i < MAX_VETS && !sentinel; i++){
-			if(vets[i] != null && vets[i].getIdVeterinary().equalsIgnoreCase(idNumber)){
+			if(vets[i] != null && vets[i].getIdNumber().equalsIgnoreCase(idNumber)){
 				sentinel = true;
 				vets[i] = null;
-				System.out.println("El veterinario fue eliminado con exito");
+				System.out.println("El veterinario fue eliminado con exito\n");
 			}
 		}if (sentinel == false) {
-			System.out.println("El Numero de registro que ingreso no existe en nuestra base de datos");
+			System.out.println("El Numero de registro que ingreso no existe en nuestra base de datos\n");
 		}
 	}
 
@@ -91,7 +91,7 @@ public class EmergencyCenter{
 				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order);
 				sentinel = true;
 				order ++;
-				System.out.print("Se ingreso la mascota " + name + " correctamente");
+				System.out.print("Se ingreso la mascota " + name + " correctamente\n");
 			}
 		}if (sentinel == false) {
 			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
@@ -137,10 +137,10 @@ public class EmergencyCenter{
 			if ((pets[i] != null && pets[i].getName().equalsIgnoreCase(name)) && (pets[i].getPetOwner() != null && pets[i].getPetOwner().getIdNumber().equalsIgnoreCase(idNumber))){
 				pets[i].setConsultationStatus(ConsultationStatus.SALIDA_SIN_ATENCION);
 				sentinel = true;
-				System.out.println("La mascota fue enviada a Salidad sin atencion");
+				System.out.println("La mascota fue enviada a Salidad sin atencion\n");
 			}
 		} if (sentinel == false) {
-			System.out.println("La mascota no se puede retirar porque no esta en Espera de ser atentida");
+			System.out.println("La mascota no se puede retirar porque no esta en Espera de ser atentida\n");
 		}
 	}
 

@@ -55,6 +55,10 @@ public class Pet{
 		return order;
 	}
 
+	public Priority getPriority(){
+		return priority;
+	}
+
 	public ConsultationStatus getConsultationStatus(){
 		return consultationStatus;
 	}
@@ -72,6 +76,14 @@ public class Pet{
 	public void setPetOwner(PetOwner petOwner){
 		this.petOwner = petOwner;
 	}
+
+	public void setOrder(int order){
+		this.order = order;
+	}
+
+	public void setPriority(Priority priority){
+		this.priority = priority;
+	}
 	
 	public void setConsultationStatus(ConsultationStatus consultationStatus){
 		this.consultationStatus = consultationStatus;
@@ -80,6 +92,8 @@ public class Pet{
 	public void setVeterinary(Veterinary veterinary){
 		this.veterinary = veterinary;
 	} 
+
+
 
 
 

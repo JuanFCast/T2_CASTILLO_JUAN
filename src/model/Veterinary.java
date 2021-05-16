@@ -25,14 +25,46 @@ public class Veterinary{
 	}
 
 	//get 
+	public String getIdNumber(){
+		return idNumber;
+	}
+
+	public String getName(){
+		return name;
+	}
+
 	public String getIdVeterinary(){
 		return idVeterinary;
 	}
 
+	public String getStatus(){
+		return status;
+	}
+
+	public int getPetsAttended(){
+		return petsAttended;
+	}
+
 
 	//set
-	public void setiIdVeterinary(String idVeterinary){
+	public void setIdNumber(String idNumber){
+		this.idNumber = idNumber;
+	} 
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public void setIdVeterinary(String idVeterinary){
 		this.idVeterinary = idVeterinary;
+	}
+
+	public void setStatus(String status){
+		this.status = status;
+	} 
+
+	public void setPetsAttended(int petsAttended){
+		this.petsAttended = petsAttended;
 	} 
 
 

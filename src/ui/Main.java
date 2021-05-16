@@ -1,5 +1,9 @@
 package ui;
 import model.EmergencyCenter;
+import model.Specie;
+import model.ConsultationStatus;
+import model.Priority;
+import model.PetOwner;
 
 import java.util.Scanner;
 
@@ -22,6 +26,8 @@ public class Main{
 		System.out.println("------------------------------------------");
 
 		int option;
+
+		//t2.mostrar();
 		do{
 			option = t2.showMenu();
 			
@@ -31,7 +37,7 @@ public class Main{
 				break;
 
 				case 2:
-				System.out.println("(2) Eliminar un veterinario");
+				t2.deleteVet();
 				break;
 
 				case 3:
@@ -89,7 +95,7 @@ public class Main{
 	
 
 	public void addVeterinay(){
-		String idNumber = "", name = "", lastName = "", idVeterinary = "";
+		String idNumber = "", name = "", lastName = "", idVeterinary = "", status = "";
 		
 		System.out.println("Porfavor ingrese los siguientes datos del Veterinario:\n");
 		System.out.print("Numero de identificacion: ");
@@ -103,21 +109,148 @@ public class Main{
 
 		System.out.print("Registro unico veterinario: ");
 		idVeterinary = sc.nextLine();
+
+		System.out.print("REstado del veterinario: ");
+		idVeterinary = sc.nextLine();
 		
-		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary));
+		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary, status));
 		
 	}
 
 
 
 
+	public void deleteVet(){
+		boolean sentinel = false;
 
-		
-		
+		for (int i = 0; i < emergency.getPets().length && !sentinel ; i++) {
+
+			if (emergency.getPets()[i] != null) {
+			System.out.print("NO se puede eliminar un veterinario, porque ya hay mascotas registradas");
+			sentinel = true;
+			}
+
+		} if(sentinel == false){
+			System.out.println("Porfavor ingrese el numero de identificacion del veterinario que desea eliminar:\n");
+			System.out.print("Numero de identificacion: ");
+			String idNumber = sc.nextLine();
+			System.out.println("------------------------------------------");
+			emergency.deleteVeterinary(idNumber);
+		}
+	}
+
+	public void newPet(){
+		System.out.println("==========================\n Formato de Registro de Nueva mascota \n==========================\n");
+		System.out.print("Ingrese el nombre de la mascota: ");
+		String petName = sc.nextLine();
+
+		System.out.print("Ingrese la edad de la mascota: ");
+		int age = sc.nextInt();
+		sc.nextLine();
+
+		System.out.println("Selecciona el numero que corresponde a la especie de la mascota\n"+
+		"(1) PERRO\n" + 
+		"(2) GATO\n" + 
+		"(3) CONEJO\n" + 
+		"(4) REPTIL\n" + 
+		"(5) PAJARO");
+		int ch = sc.nextInt();
+		sc.nextLine();
+
+		String race = "";
+		Specie specie = Specie.PERRO;
+		if (ch == 1) {
+			specie = Specie.PERRO;
+			System.out.println("Ingrese la raza de la mascota");
+			race = sc.nextLine();
+		} else if (ch == 2) {
+			specie = Specie.GATO;
+			System.out.println("Ingrese la raza de la mascota");
+			race = sc.nextLine();
+		} else if (ch == 3) {
+			 specie = Specie.CONEJO;
+		} else if (ch == 4) {
+			 specie = Specie.REPTIL;
+		} else {
+			 specie = Specie.PAJARO;
+		}
+
+		System.out.println("A continuacion ingresa la informacion del propietario de la mascota");
+		System.out.print("Numero de identificacion: ");
+		String idNumber = sc.nextLine();							
+		System.out.print("Nombre: ");
+		String ownerName = sc.nextLine();
+		System.out.print("Telefono: ");
+		String phone = sc.nextLine();
+		System.out.print("Direccion");
+		String address = sc.nextLine();
+
+		System.out.println("\nIngresa ahora los sintomas de la mascota");
+		String sintomas = sc.nextLine();
+		System.out.println("Selecciona el numero que corresponde a la prioridad para la mascota\n"+
+		"(1) Prioridad 1\n" + 
+		"(2) Prioridad 2\n" + 
+		"(3) Prioridad 3\n" +
+		"(4) Prioridad 4\n" +
+		"(5) Prioridad 5");                    
+		int chose1 = sc.nextInt();
+		sc.nextLine();
+		Priority prioridad = Priority.PRIORIDAD_1;
+		if (chose1 == 1) {
+			prioridad = Priority.PRIORIDAD_1;
+		} else if (chose1 == 2) {
+			prioridad = Priority.PRIORIDAD_2;
+		} else if (chose1 == 3) {
+			prioridad = Priority.PRIORIDAD_3;
+		} else if (chose1 == 4) {
+			prioridad = Priority.PRIORIDAD_4;
+		} else {
+			prioridad = Priority.PRIORIDAD_5;
+		}
+		if (comprobation(petName, ownerName)) {
+			System.out.println("Esta combinacion de nombre de la mascota y del propietario ya existe");
+		} else {
+			if (ch == 1 || ch == 2) {
+				emergency.addPet(petName, age, specie, new PetOwner(idNumber, ownerName, phone, address),  sintomas,  prioridad, race);
+			} else {
+				emergency.addPet(petName, age, specie, new PetOwner(idNumber, ownerName, phone, address),  sintomas,  prioridad);
+			}
+		}
+	}
 
 
 
 
+	public boolean comprobation(String petName, String ownerName){
+		boolean sentinel = false;
+		for(int i = 0; i < emergency.getPets().length && !sentinel; i++){
+			if ((emergency.getPets()[i] != null && emergency.getPets()[i].getName().equalsIgnoreCase(petName)) && (emergency.getPets()[i].getPetOwner() != null && emergency.getPets()[i].getPetOwner().getName().equalsIgnoreCase(ownerName))) {
+				sentinel = true;
+			}
+		} 
+		return sentinel;
+	}
+
+
+	/*
+	public void removePet(){
+		System.out.println("Ingrese el nombre de la mascota");
+		String petName = sc.nextLine();
+		System.out.println("Ingrese el ID del propietario de la mascota");
+		String idNumber = sc.nextLine();
+		boolean find = false;
+		for(int i = 0; i < emergency.getPets().length && !find; i++){
+			if ((emergency.getPets()[i] != null && emergency.getPets()[i].getName().equalsIgnoreCase(petName)) && (emergency.getPets()[i].getOwner() != null && emergency.getPets()[i].getOwner().getIdNumber().equalsIgnoreCase(idNumber))) {
+				if (emergency.getPets()[i].getStatus() == Status.ESPERANDO_SER_ATENDIDO) {
+					emergency.removePet(petName, idNumber);
+				}
+				find = true;
+			}
+		}
+	}
+	*/
+
+	
 
 }
 	

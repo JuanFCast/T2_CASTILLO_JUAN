@@ -14,12 +14,12 @@ public class Veterinary{
 
 
 	//constructor
-	public Veterinary(String idNumber, String name, String lastName, String idVeterinary){
+	public Veterinary(String idNumber, String name, String lastName, String idVeterinary, String status){
 		this.idNumber = idNumber; 
 		this.name = name;
 		this.lastName = lastName;
 		this.idVeterinary = idVeterinary;
-		status = "Available";
+		this.status = status;
 		this.petsAttended = 0;
 
 	}
@@ -42,7 +42,9 @@ public class Veterinary{
 		String answer = "Numero de identificacion: " + idNumber + 
 		"Nombres : " + name +
 		"Apellidos: " + lastName + 
-		"Registro unico veterinario" + idVeterinary;
+		"Registro unico veterinario: " + idVeterinary +
+		"Estado del veterinario: " + status + 
+		"Mascotas atentidas: " + petsAttended;
 
 		
 		return answer;

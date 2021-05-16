@@ -4,6 +4,7 @@ public class EmergencyCenter{
 
 	public int MAX_VETS = 7;
 	public int MAX_PETS = 120;
+	private int order = 1;
 	
 	//relaciones
 	private Veterinary[] vets = new Veterinary[MAX_VETS];
@@ -12,8 +13,6 @@ public class EmergencyCenter{
 
 	//constructor
 	public EmergencyCenter(){
-		
-
 	}
 
 
@@ -36,7 +35,7 @@ public class EmergencyCenter{
 	* @param pib int, the parameter is that the program can only continue if the values are integers.
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
-	public String addVeterinay(String idNumber, String name, String lastName, String idVeterinary){
+	public String addVeterinay(String idNumber, String name, String lastName, String idVeterinary, String status){
 		String confirmation = "";
 		boolean sentinel = false;
 		
@@ -44,7 +43,7 @@ public class EmergencyCenter{
 
 			if(vets[i] == null){
 				sentinel = true;
-				vets[i] = new Veterinary(idNumber, name, lastName, idVeterinary);
+				vets[i] = new Veterinary(idNumber, name, lastName, idVeterinary, status);
 				confirmation = "\n----------------------\nVeterinanio REGISTRADO\n----------------------\n";
 			}
 			
@@ -62,16 +61,19 @@ public class EmergencyCenter{
 	* @param pib int, the parameter is that the program can only continue if the values are integers.
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
-	public void deleteVeterinary(String id){
+	public void deleteVeterinary(String idNumber){
 		boolean sentinel = false;
 		for(int i = 0; i < MAX_VETS && !sentinel; i++){
-			if(vets[i] != null && vets[i].getIdVeterinary().equalsIgnoreCase(id)){
+			if(vets[i] != null && vets[i].getIdVeterinary().equalsIgnoreCase(idNumber)){
 				sentinel = true;
 				vets[i] = null;
 				System.out.println("El veterinario fue eliminado con exito");
 			}
-		} 
+		}if (sentinel == false) {
+			System.out.println("El Numero de registro que ingreso no existe en nuestra base de datos");
+		}
 	}
+
 
 
 	/**
@@ -80,8 +82,7 @@ public class EmergencyCenter{
 	* @param pib int, the parameter is that the program can only continue if the values are integers.
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
-	
-	public void addPet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority, int order){
+	public void addPet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority){
 		boolean sentinel = false;
 
 		for(int i = 0; i < MAX_PETS && !sentinel; i++){
@@ -92,11 +93,34 @@ public class EmergencyCenter{
 				order ++;
 				System.out.print("Se ingreso la mascota " + name + " correctamente");
 			}
+		}if (sentinel == false) {
+			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
 		}
 	}
 
 
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public void addPet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority, String race){
+		boolean sentinel = false;
 
+		for(int i = 0; i < MAX_PETS && !sentinel; i++){
+
+			if(pets[i] == null){
+				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order, race);
+				sentinel = true;
+				order ++;
+				System.out.print("Se ingreso la mascota " + name + " correctamente");
+			}
+		}if (sentinel == false) {
+			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
+		}
+
+	}
 
 
 	/**
@@ -122,103 +146,6 @@ public class EmergencyCenter{
 
 
 
-	/*
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	
-	public void startConsultation(String aFullName, int aYear, double aAmountDonation, PaymentMethod aPaymentMethod){
-		int pos;
-		boolean sentinel = false;
-		
-		for(pos = 0;(pos < MAX_DONORS)&& !sentinel; pos++){
-			if(donors[pos] == null){
-			donors[pos] = new Donor(aFullName, aYear, aAmountDonation, aPaymentMethod);
-			sentinel = true;
-			}
-		}
-		donorsNumber++;
-	}
-
-
-	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
-	
-	public void finishConsultation(String aFullName, int aYear, double aAmountDonation, PaymentMethod aPaymentMethod){
-		int pos;
-		boolean sentinel = false;
-		
-		for(pos = 0;(pos < MAX_DONORS)&& !sentinel; pos++){
-			if(donors[pos] == null){
-			donors[pos] = new Donor(aFullName, aYear, aAmountDonation, aPaymentMethod);
-			sentinel = true;
-			}
-		}
-		donorsNumber++;
-	}
-
-
-
-	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
-	
-	public void showMissingPets(String aFullName, int aYear, double aAmountDonation, PaymentMethod aPaymentMethod){
-		int pos;
-		boolean sentinel = false;
-		
-		for(pos = 0;(pos < MAX_DONORS)&& !sentinel; pos++){
-			if(donors[pos] == null){
-			donors[pos] = new Donor(aFullName, aYear, aAmountDonation, aPaymentMethod);
-			sentinel = true;
-			}
-		}
-		donorsNumber++;
-	}
-
-
-	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
-	
-	public void closeCenter(String aFullName, int aYear, double aAmountDonation, PaymentMethod aPaymentMethod){
-		int pos;
-		boolean sentinel = false;
-		
-		for(pos = 0;(pos < MAX_DONORS)&& !sentinel; pos++){
-			if(donors[pos] == null){
-			donors[pos] = new Donor(aFullName, aYear, aAmountDonation, aPaymentMethod);
-			sentinel = true;
-			}
-		}
-		donorsNumber++;
-	}
-	
-
-
-
-
-
-
-
-
-	//to String
-	public String toString(){
-
-		String answer = "";
-
-		
-		return answer;
-	}
-	*/
-
 
 }

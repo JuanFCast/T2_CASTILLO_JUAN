@@ -17,7 +17,6 @@ public class PetOwner{
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
-
 	}
 
 
@@ -27,11 +26,18 @@ public class PetOwner{
 		return idNumber;
 	}
 
+	public String getName(){
+		return name;
+	}
 
-
+	
 	//set
 	public void setIdNumber(String idNumber){
 		this.idNumber = idNumber;
+	}
+
+	public void setName(String name){
+		this.name = name;
 	}
 	
 	

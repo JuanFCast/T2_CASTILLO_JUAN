@@ -6,6 +6,7 @@ public class Pet{
 	private int age;
 	private String symptoms;
 	private int order;
+	private String race;
 
 	// relaciones
 	private Priority priority;
@@ -28,6 +29,18 @@ public class Pet{
 		consultationStatus = ConsultationStatus.ESPERANDO_SER_ATENDIDO;
 	}
 
+	public Pet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority, int order, String race){
+		this.name = name;
+		this.age = age;
+		this.specie = specie;
+		this.petOwner = petOwner;
+		this.symptoms = symptoms;
+		this.priority = priority;
+		this.order = order;
+		this.race = race;
+		consultationStatus = ConsultationStatus.ESPERANDO_SER_ATENDIDO;
+	}
+
 	
 	//get 
 	public String getName(){
@@ -36,6 +49,10 @@ public class Pet{
 
 	public PetOwner getPetOwner(){
 		return petOwner;
+	}
+
+	public int getOrder(){
+		return order;
 	}
 
 	public ConsultationStatus getConsultationStatus(){
@@ -69,7 +86,14 @@ public class Pet{
 	//to String
 	public String toString(){
 
-		String answer = "";
+		String answer = "Nombres: " + name + 
+		"Edad: " + age + 
+		"Especie: " + specie + 
+		"Dueno: " + petOwner.toString() + 
+		"Sintomas: " + symptoms + 
+		"Prioridad: " + priority +
+		"Orden de llegada: " + order;
+
 
 		
 		return answer;

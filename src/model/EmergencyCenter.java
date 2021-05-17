@@ -144,6 +144,14 @@ public class EmergencyCenter{
 		}
 	}
 	
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public int petsNumber(){
 		int number = 0;
 		
@@ -159,7 +167,12 @@ public class EmergencyCenter{
 	
 	
 
-	
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public boolean verifyIfPetsIsNull(){
 		int count = 0;
 		boolean confirmation = false;

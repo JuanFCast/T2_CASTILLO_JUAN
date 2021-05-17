@@ -9,8 +9,23 @@ import java.util.Scanner;
 
 
 public class Main{
+
+
+	/**
+	* Description: It is a class in the java package. Used to get input from primitive types like int, double etc. and also String.
+	*/ 
 	public Scanner sc;
+
+
+	/**
+	* Description: It is a class in the java package. Used to get input from primitive types like int, double etc. and also String.
+	*/ 
 	private EmergencyCenter emergency;
+
+
+	/**
+	* Description: It is a class in the java package. Used to get input from primitive types like int, double etc. and also String.
+	*/ 
 	private static int optionM;
 	
 
@@ -74,7 +89,16 @@ public class Main{
 		}while(optionM != 0);
 	}
 	
-	//Method Menu
+
+	//Metodos
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public int showMenu(){
 		int option;
 
@@ -98,7 +122,12 @@ public class Main{
 	}
 
 	
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void addVeterinay(){
 		String idNumber = "", name = "", lastName = "", idVeterinary = "", status = "";
 		
@@ -116,7 +145,7 @@ public class Main{
 		idVeterinary = sc.nextLine();
 
 		System.out.print("Estado del veterinario: ");
-		idVeterinary = sc.nextLine();
+		status = sc.nextLine();
 		
 		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary, status));
 		
@@ -124,7 +153,12 @@ public class Main{
 
 
 
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void deleteVet(){
 		boolean sentinel = false;
 
@@ -144,6 +178,15 @@ public class Main{
 		}
 	}
 
+
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void newPet(){
 		System.out.println("==========================\n Formato de Registro de Nueva mascota \n==========================\n");
 		System.out.print("Ingrese el nombre de la mascota: ");
@@ -225,7 +268,12 @@ public class Main{
 
 
 
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public boolean comprobation(String petName, String ownerName){
 		boolean sentinel = false;
 		for(int i = 0; i < emergency.getPets().length && !sentinel; i++){
@@ -237,7 +285,12 @@ public class Main{
 	}
 
 
-	
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void removePet(){
 		System.out.println("Ingrese el nombre de la mascota");
 		String petName = sc.nextLine();
@@ -255,7 +308,12 @@ public class Main{
 	}
 
 
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void startConsultation(){
 		System.out.println("Ingrese el numero de Documento del veterinario");
 		String idNumber = sc.nextLine();
@@ -289,7 +347,12 @@ public class Main{
 
 
 
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public int nextConsultation(){
 		boolean sentinel = false;
 		int pos = -1;
@@ -332,7 +395,12 @@ public class Main{
 	
 
 
-
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void finishConsultation(){
 		boolean sentinel1 = false;
 		boolean sentinel2 = false;
@@ -380,11 +448,26 @@ public class Main{
 
 
 
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void petNumber(){
 		System.out.println("El numero de mascotas que faltan por atender son: " + emergency.petsNumber());
 	}
 
 
+
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
 	public void closeCenter(){
 		
 		boolean sentinel = false;

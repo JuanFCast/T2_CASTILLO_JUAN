@@ -7,7 +7,7 @@ import model.PetOwner;
 
 import java.util.Scanner;
 
-
+//olaaaaaaaaaaa
 public class Main{
 	public Scanner sc;
 	private EmergencyCenter emergency;

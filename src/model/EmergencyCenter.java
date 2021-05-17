@@ -1,5 +1,5 @@
 package model;
-//5
+
 public class EmergencyCenter{
 
 	public int MAX_VETS = 7;

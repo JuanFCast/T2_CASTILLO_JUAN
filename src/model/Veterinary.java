@@ -1,5 +1,5 @@
 package model;
-//5
+
 public class Veterinary{
 
 	private String idNumber;

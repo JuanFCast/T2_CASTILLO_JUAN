@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Main{
 	public Scanner sc;
 	private EmergencyCenter emergency;
-	public boolean logout;
 	private static int optionM;
 	
 
@@ -19,7 +18,6 @@ public class Main{
 	public Main() {
     sc = new Scanner(System.in);
     emergency = new EmergencyCenter();
-    logout = false;	
 	optionM = 0;
     }
 

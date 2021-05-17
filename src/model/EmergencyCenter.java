@@ -35,7 +35,7 @@ public class EmergencyCenter{
 	* @param pib int, the parameter is that the program can only continue if the values are integers.
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
-	public String addVeterinay(String idNumber, String name, String lastName, String idVeterinary, String status){
+	public String addVeterinay(String idNumber, String name, String lastName, String idVeterinary){
 		String confirmation = "";
 		boolean sentinel = false;
 		
@@ -43,7 +43,7 @@ public class EmergencyCenter{
 
 			if(vets[i] == null){
 				sentinel = true;
-				vets[i] = new Veterinary(idNumber, name, lastName, idVeterinary, status);
+				vets[i] = new Veterinary(idNumber, name, lastName, idVeterinary);
 				confirmation = "\n----------------------\nVeterinanio REGISTRADO\n----------------------\n";
 			}
 			
@@ -143,7 +143,176 @@ public class EmergencyCenter{
 			System.out.println("La mascota no se puede retirar porque no esta en Espera de ser atentida\n");
 		}
 	}
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public String showVets(){
+		String text = "========\n= VETS =\n========\n\n=========================\n";
+		int count = 0;
+		
+		for(int i = 0; i < MAX_VETS; i++){
+			if(vets[i] != null){
+				
+				text += vets[i].toString();
+				
+			}else{count++;}
+		}
+		
+		if(count == MAX_VETS){text = "No hay veterinarios registrados";}
+		
+		return text;
+	}
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public int findVet(String idNumber){
+		int index = -1;
+		boolean sentinel = false;
+		
+		for(int i = 0; i < MAX_VETS && !sentinel; i++){
+			if(vets[i] != null){
+				if(idNumber.equals(vets[i].getIdNumber())){
+					sentinel = true;
+					index = i;
+				}
+			}
+		}
+		if(sentinel = false){index = -1;}
+		
+		return index;
+	}
+
+
+	public String startConsult(int index){
+		String confirmation = "";
+		boolean sentinel = false;
+		int i1 = -1, i2 = -1, i3 = -1, i4 = -1, i5 = -1, count = 0;
+		
+		for(int i = 0; i < MAX_PETS; i++){
+			if(pets[i] == null){
+				count++;
+			}
+		}
+		
+		if(count != MAX_PETS){
+			if((vets[index].getStatus()).equals("Disponible")){
+			
+				for(int i = 0; i < MAX_PETS && !sentinel; i++){
+					if(pets[i] != null){
+						if(pets[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO){
+							if(pets[i].getPriority() == Priority.PRIORIDAD_1){
+								sentinel = true;
+								i1 = i;
+							}
+						}
+					}
+				}
+				sentinel = false;
+				for(int i = 0; i < MAX_PETS && !sentinel; i++){
+					if(pets[i] != null){
+						if(pets[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO){
+							if(pets[i].getPriority() == Priority.PRIORIDAD_2){
+								sentinel = true;
+								i2 = i;
+							}
+						}
+					}
+				}
+				sentinel = false;
+				for(int i = 0; i < MAX_PETS && !sentinel; i++){
+					if(pets[i] != null){
+						if(pets[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO){
+							if(pets[i].getPriority() == Priority.PRIORIDAD_3){
+								sentinel = true;
+								i3 = i;
+							}
+						}
+					}
+				}
+				sentinel = false;
+				for(int i = 0; i < MAX_PETS && !sentinel; i++){
+					if(pets[i] != null){
+						if(pets[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO){
+							if(pets[i].getPriority() == Priority.PRIORIDAD_4){
+								sentinel = true;
+								i4 = i;
+							}
+						}
+					}
+				}
+				sentinel = false;
+				for(int i = 0; i < MAX_PETS && !sentinel; i++){
+					if(pets[i] != null){
+						if(pets[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO){
+							if(pets[i].getPriority() == Priority.PRIORIDAD_5){
+								sentinel = true;
+								i5 = i;
+							}
+						}
+					}
+				}
+			
+			
+				if(i1 != -1){pets[i1].setVeterinary(vets[index]); pets[i1].setConsultationStatus(ConsultationStatus.EN_CONSULTA);}
+				else if(i2 != -1){pets[i2].setVeterinary(vets[index]); pets[i2].setConsultationStatus(ConsultationStatus.EN_CONSULTA);}
+				else if(i3 != -1){pets[i3].setVeterinary(vets[index]); pets[i3].setConsultationStatus(ConsultationStatus.EN_CONSULTA);}
+				else if(i4 != -1){pets[i4].setVeterinary(vets[index]); pets[i4].setConsultationStatus(ConsultationStatus.EN_CONSULTA);}
+				else if(i5 != -1){pets[i5].setVeterinary(vets[index]); pets[i5].setConsultationStatus(ConsultationStatus.EN_CONSULTA);}
+				else{confirmation += "Ha ocurrido un error";}
+			
+				vets[index].setStatus("In consultation");
+				vets[index].setPetsAttended(1);
+				confirmation = "Desde este momento, el veterinario " + vets[index].getName() + " " + vets[index].getLastName() + " pasa a consulta veterinaria";
+			} else{confirmation = "Lo sentimos, el veterinario seleccionado ya esta en consulta actualmente";}
+		} else{confirmation = "No hay mascotas registradas en el centro";}
+				
+		return confirmation;
+	}
 	
+
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public String finishConsult(int indexVet, String namePet, int option){
+		//Esta dejando pasar a hospitalizacion a las que ya estan en hospitalizacion, internamente esta finalizando consulta a aquellas que ya salieron
+		int index = -1;
+		boolean sentinel = false;
+		String confirmation = "";
+		
+		for(int i = 0; i < MAX_PETS && !sentinel; i++){
+			if(pets[i] != null){
+				if(pets[i].getVeterinary() == vets[indexVet]){
+					if((pets[i].getName()).equals(namePet)){
+						index = i;
+						sentinel = true;
+						if(option == 1){
+							pets[index].setConsultationStatus(ConsultationStatus.SALIDA_AUTORIZADA);
+							vets[indexVet].setStatus("Available");
+							confirmation = "Has autorizado la salida de la mascota";
+						} else{pets[index].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION); confirmation = "La mascota ha sido trasladada a hospitalizacion";}
+						
+					} else{confirmation = "El veterinario selecionado no esta atendiendo a esa mascota";}
+				}
+			}
+		}
+		
+		return confirmation;
+	}
 
 
 	/**

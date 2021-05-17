@@ -131,7 +131,7 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void addVeterinay(){
-		String idNumber = "", name = "", lastName = "", idVeterinary = "", status = "";
+		String idNumber = "", name = "", lastName = "", idVeterinary = "";
 		
 		System.out.println("Porfavor ingrese los siguientes datos del Veterinario:\n");
 		System.out.print("Numero de identificacion: ");
@@ -146,10 +146,8 @@ public class Main{
 		System.out.print("Registro unico veterinario: ");
 		idVeterinary = sc.nextLine();
 
-		System.out.print("Estado del veterinario: ");
-		status = sc.nextLine();
 		
-		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary, status));
+		System.out.println(emergency.addVeterinay(idNumber, name, lastName, idVeterinary));
 		
 	}
 
@@ -317,83 +315,27 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void startConsultation(){
-		System.out.println("Ingrese el numero de Documento del veterinario");
-		String idNumber = sc.nextLine();
-
-		for (int i = 0; i < emergency.getVets().length; i++) {
-
-			if (emergency.getVets()[i]!=null && emergency.getVets()[i].getIdNumber().equalsIgnoreCase(idNumber)) {
-
-				if (emergency.getVets()[i].getStatus().equalsIgnoreCase("disponible")) {
-
-					if (nextConsultation() != -1) {
-
-						emergency.getPets()[nextConsultation()].setConsultationStatus(ConsultationStatus.EN_CONSULTA);
-						emergency.getPets()[nextConsultation()].setVeterinary(emergency.getVets()[i]);
-						int count = emergency.getVets()[i].getPetsAttended();
-						emergency.getVets()[i].setPetsAttended(count++);
-					} else {
-
-						System.out.println("Ya no quedan mascotas por atender");
-					}
-				} else {
-
-					System.out.println("El veterinario que eligio no se encuentra disponible");
-				}
-			} else {
-
-				System.out.println("El numero de Documento que ingreso no corresponde al de ningun veterinario");
-			}
+		
+		System.out.println(emergency.showVets());
+		if((emergency.showVets()).equals("No hay veterinarios registrados")){
+			System.out.println();
+		} else{
+			System.out.println("Porfavor digita el numero de identificacion del veterinario que iniciara su consulta: ");
+			System.out.print("CC: ");
+			String idNumber = sc.nextLine();
+			System.out.println("");
+			
+			int indexToStartConsult = emergency.findVet(idNumber);
+			
+			if(indexToStartConsult != -1){
+				System.out.println(emergency.startConsult(indexToStartConsult));
+			} else{System.out.println("No existe ningun veterinario con esa identificacion");}
+			
+			System.out.println("===============================================================");
 		}
+		
 	}
 
-
-
-	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
-	*/
-	public int nextConsultation(){
-		boolean sentinel = false;
-		int pos = -1;
-		for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
-			if ((emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_1) && (emergency.getPets()[i].getOrder() == (i+1)) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO)) {
-				sentinel = true;
-				pos = i;
-			} 
-		} if (sentinel == false) {
-			for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
-				if ((emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_2) && (emergency.getPets()[i].getOrder() == (i+1)) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO)) {
-					sentinel = true;
-					pos = i;
-				} 
-			}
-		} if (sentinel == false) {
-			for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
-				if ((emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_3) && (emergency.getPets()[i].getOrder() == (i+1)) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO)) {
-					sentinel = true;
-					pos = i;
-				} 
-			}
-		} if (sentinel == false) {
-			for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
-				if ((emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_4) && (emergency.getPets()[i].getOrder() == (i+1)) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO)) {
-					sentinel = true;
-					pos = i;
-				} 
-			}
-		} if (sentinel == false) {
-			for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
-				if ((emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_5) && (emergency.getPets()[i].getOrder() == (i+1)) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO)) {
-					sentinel = true;
-					pos = i;
-				} 
-			}
-		}
-		return pos;
-	}
 	
 
 
@@ -404,48 +346,50 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void finishConsultation(){
-		boolean sentinel1 = false;
-		boolean sentinel2 = false;
-
-		System.out.println("Ingrese el numero de Documento del veterinario");
-		String cc = sc.nextLine();
-		System.out.println("Ingrese el nombre de la mascota");
-		String petName = sc.nextLine();
-
-		for (int i = 0; i < emergency.getVets().length && !sentinel2; i++) {
-
-			if (emergency.getVets()[i] != null && emergency.getVets()[i].getIdNumber().equalsIgnoreCase(cc)){
-
-				for (int j = 0; j < emergency.getPets().length && !sentinel1; j++) {
-
-					if (emergency.getPets()[j] != null && emergency.getPets()[j].getName().equalsIgnoreCase(petName)) {
-
-						if ((emergency.getPets()[j].getConsultationStatus() == ConsultationStatus.EN_CONSULTA) && (emergency.getPets()[j].getVeterinary() != null && emergency.getPets()[j].getVeterinary() == emergency.getVets()[i])) {
-							System.out.println("Eliga una de las siguientes opciones:\n"+
-							"(1) Para autorizar la salida de la mascota\n"+
-							"(2) Para hospitalizar a la mascota");
-							int opcion = sc.nextInt();
-							sc.nextLine();
-
-							if (opcion == 1) {
-
-								emergency.getPets()[j].setConsultationStatus(ConsultationStatus.SALIDA_AUTORIZADA);
-							} else {
-
-								emergency.getPets()[j].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION);
-							}
-							emergency.getVets()[i].setStatus("disponible");
-						} else {
-
-							System.out.println("La mascota no se encuentra en consulta con este veterinario");
-						}
+		String idNumber, namePet;
+		int indexVet, option = 0;
+		
+		System.out.println(emergency.showVets());
+		if((emergency.showVets()).equals("No hay veterinarios registrados")){
+			System.out.println();
+		} else{
+			System.out.println("Por favor ingrese el numero de identificacion del veterinario que desea finalizar su consulta:\n");
+			System.out.print("Numero de identificacion: ");
+			idNumber = sc.nextLine();
+			System.out.print("Nombre de la mascota quien esta atendiendo: ");
+			namePet = sc.nextLine();
+			
+			indexVet = emergency.findVet(idNumber);
+			
+			if(indexVet != -1){
+				do{
+					System.out.println("Escoja la opcion que desea:");
+					System.out.println("(1) Para autorizar la salida");
+					System.out.println("(2) Para pasar la mascota a hospitalizacion");
+					System.out.print("Opcion: ");
+					option = sc.nextInt();
+					sc.nextLine();
+					
+					switch(option){
+						case 1:
+						option = 1;
+						break;
+						case 2:
+						option = 2;
+						break;
+						default:
+						option = 0;
+						break;
 					}
-				}
-			} else {
-
-				System.out.println("El Documento de indentidad que ingreso no corresponde al de ningun veterinario");
-			}
+					
+				}while(option == 0);
+				
+				System.out.println(emergency.finishConsult(indexVet, namePet, option));
+				
+			} else{System.out.println("No existe ningun veterinario con esa identificacion");}
+				System.out.println("===================================");
 		}
+		
 	}
 
 

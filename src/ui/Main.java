@@ -12,29 +12,30 @@ public class Main{
 	public Scanner sc;
 	private EmergencyCenter emergency;
 	public boolean logout;
+	private static int optionM;
 	
 
 	//Constructor para evitar el static
 	public Main() {
     sc = new Scanner(System.in);
     emergency = new EmergencyCenter();
-    	
+    logout = false;	
+	optionM = 0;
     }
 
 	public static void main(String[] args) {
-		boolean logout = false;
 		Main t2 = new Main();
 		System.out.println("------------------------------------------");
 		System.out.println("-----BIENVENID@ AL CENTRO VETERINARIO-----");
 		System.out.println("------------------------------------------");
 
-		int option;
+		
 
 		
 		do{
-			option = t2.showMenu();
+			optionM = t2.showMenu();
 			
-			switch(option){
+			switch(optionM){
 				case 1:
 				t2.addVeterinay();
 				break;
@@ -64,15 +65,15 @@ public class Main{
 				break;
 
 				case 8:
-				t2.logout();
+				t2.closeCenter();
 				break;
 
 				default:
-				option = 0;
+				optionM = 0;
 				break;
 			}
 			
-		}while(option != 8 || !logout);
+		}while(optionM != 0);
 	}
 	
 	//Method Menu
@@ -382,17 +383,12 @@ public class Main{
 
 
 	public void petNumber(){
-		int total = 0;
-		for (int i = 0; i < emergency.getPets().length; i++) {
-			if (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO) {
-				total++;
-			}
-		}
-		System.out.println("El numero de mascotas que faltan por atender son: "+total);
+		System.out.println("El numero de mascotas que faltan por atender son: " + emergency.petsNumber());
 	}
 
 
-	public void logout(){
+	public void closeCenter(){
+		
 		boolean sentinel = false;
 
 		for (int i = 0; i < emergency.getPets().length && !sentinel; i++) {
@@ -400,13 +396,21 @@ public class Main{
 				System.out.println("No se puede realizar el cierre del PetCenter porque aun quedan mascotas por atender");
 				sentinel = true;
 			}
-		} if (sentinel == false) {
+		} 
+		
+		if (sentinel == false) {
+
 			int max = 0;
 			for (int i = 0; i < emergency.getVets().length ; i++) {
 				if (emergency.getVets()[i] != null && max < emergency.getVets()[i].getPetsAttended()) {
 					max = emergency.getVets()[i].getPetsAttended();
 				}
-			} System.out.println("El veterinario que tuvo el mayor numero de consultas fue: " + emergency.getVets()[max].getName());
+			}
+			
+			if(emergency.getVets()[max] != null){
+				System.out.println("El veterinario que tuvo el mayor numero de consultas fue: " + emergency.getVets()[max].getName());
+			}
+			
 			int count =0;
 			for (int i = 0; i < emergency.getPets().length && ! sentinel; i++) {
 				if ((emergency.getPets()[i] != null && emergency.getPets()[i].getPriority() == Priority.PRIORIDAD_1) && (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.SALIDA_AUTORIZADA || emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.TRASLADO_A_HOSPITALIZACION)) {
@@ -452,7 +456,8 @@ public class Main{
 					emergency.getPets()[i] = null;
 				}
 			}
-			logout = true;
+			
+			optionM = 0;
 		}
 	}
 

@@ -1,5 +1,5 @@
 package model;
-
+//5
 public class Veterinary{
 
 	private String idNumber;
@@ -9,7 +9,7 @@ public class Veterinary{
 	private String status;
 	private int petsAttended;
 
-	// relaciones
+	
 
 
 

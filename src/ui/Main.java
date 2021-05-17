@@ -7,7 +7,7 @@ import model.PetOwner;
 
 import java.util.Scanner;
 
-//aiuda
+
 public class Main{
 
 

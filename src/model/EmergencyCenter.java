@@ -91,7 +91,7 @@ public class EmergencyCenter{
 				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order);
 				sentinel = true;
 				order ++;
-				System.out.print("Se ingreso la mascota " + name + " correctamente\n");
+				System.out.print("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
 			}
 		}if (sentinel == false) {
 			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
@@ -114,7 +114,7 @@ public class EmergencyCenter{
 				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order, race);
 				sentinel = true;
 				order ++;
-				System.out.print("Se ingreso la mascota " + name + " correctamente");
+				System.out.print("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
 			}
 		}if (sentinel == false) {
 			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");

@@ -111,7 +111,9 @@ public class Main{
 		System.out.println("(5) Iniciar una consulta");
 		System.out.println("(6) Finalizar una consulta");
 		System.out.println("(7) Numero de mascotas que NO han sido atentidas");
-		System.out.println("\n(8) Cierre diario del Centro\n");
+		System.out.println("(8) Cierre diario del Centro\n");
+
+		System.out.println("(0) Finalizar programa\n");
 
 		System.out.print("Opcion: ");
 		option = sc.nextInt();

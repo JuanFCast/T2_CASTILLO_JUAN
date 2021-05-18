@@ -18,13 +18,13 @@ public class Main{
 
 
 	/**
-	* Description: It is a class in the java package. Used to get input from primitive types like int, double etc. and also String.
+	* Description: 
 	*/ 
 	private EmergencyCenter emergency;
 
 
 	/**
-	* Description: It is a class in the java package. Used to get input from primitive types like int, double etc. and also String.
+	* Description: 
 	*/ 
 	private static int optionM;
 	
@@ -133,7 +133,7 @@ public class Main{
 	public void addVeterinay(){
 		String idNumber = "", name = "", lastName = "", idVeterinary = "";
 		
-		System.out.println("Porfavor ingrese los siguientes datos del Veterinario:\n");
+		System.out.println("==========================\n Formato de Registro de Nuev@ Veterinari@ \n==========================\n");
 		System.out.print("Numero de identificacion: ");
 		idNumber = sc.nextLine();
 
@@ -236,11 +236,11 @@ public class Main{
 		System.out.println("\nIngresa ahora los sintomas de la mascota");
 		String sintomas = sc.nextLine();
 		System.out.println("Selecciona el numero que corresponde a la prioridad para la mascota\n"+
-		"(1) Prioridad 1\n" + 
-		"(2) Prioridad 2\n" + 
-		"(3) Prioridad 3\n" +
-		"(4) Prioridad 4\n" +
-		"(5) Prioridad 5");                    
+		"(1) Necesita atencion de forma inmediata\n" + 
+		"(2) El tiempo de espera es maximo 10 minutos\n" + 
+		"(3) La atencion puede demorarse 60 minutos\n" +
+		"(4) La atencion puede demorarse 2 horas\n" +
+		"(5) La atencion puede demorarse 4 horas");                    
 		int chose1 = sc.nextInt();
 		sc.nextLine();
 		Priority prioridad = Priority.PRIORIDAD_1;

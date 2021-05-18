@@ -152,7 +152,7 @@ public class EmergencyCenter{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public String showVets(){
-		String text = "========\n= VETS =\n========\n\n=========================\n";
+		String text = "-------------\n= VETERINARIOS =\n-------------";
 		int count = 0;
 		
 		for(int i = 0; i < MAX_VETS; i++){

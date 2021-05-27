@@ -1,12 +1,15 @@
-package ui;
+package ui;                                             // javac -cp src src/ui/Main.java -d bin
+														// java -cp bin ui.Main
+														// javadoc -cp src -subpackages model:ui -d docs/javadoc/                                        
 import model.EmergencyCenter;
 import model.Specie;
 import model.ConsultationStatus;
 import model.Priority;
 import model.PetOwner;
 
+
 import java.util.Scanner;
-//Hola
+
 
 public class Main{
 
@@ -18,24 +21,29 @@ public class Main{
 
 
 	/**
-	* Description: 
+	* Description: Esta clase se encarga de unir los metodos que sirven para el funcionamiento del programa 
 	*/ 
 	private EmergencyCenter emergency;
 
 
 	/**
-	* Description: 
+	* Description: Esta variable se encarga de cerrar el programa
 	*/ 
 	private static int optionM;
 	
 
-	//Constructor para evitar el static
+	//No se que colocar aqui
 	public Main() {
     sc = new Scanner(System.in);
     emergency = new EmergencyCenter();
 	optionM = 0;
     }
 
+
+    /**
+	* Description: class main method
+	* @param args String, I don't know what to write but I put it because when I generated the documentation it told me that it had no parameters, and then I write this so that that message stops appearing xD
+	*/
 	public static void main(String[] args) {
 		Main t2 = new Main();
 		System.out.println("------------------------------------------");
@@ -133,7 +141,7 @@ public class Main{
 	public void addVeterinay(){
 		String idNumber = "", name = "", lastName = "", idVeterinary = "";
 		
-		System.out.println("==========================\n Formato de Registro de Nuev@ Veterinari@ \n==========================\n");
+		System.out.println("===========================================\n Formato de Registro de Nuev@ Veterinari@ \n===========================================\n");
 		System.out.print("Numero de identificacion: ");
 		idNumber = sc.nextLine();
 
@@ -165,6 +173,7 @@ public class Main{
 		for (int i = 0; i < emergency.getPets().length && !sentinel ; i++) {
 
 			if (emergency.getPets()[i] != null) {
+			System.out.println("------------------------------------------");
 			System.out.print("NO se puede eliminar un veterinario, porque ya hay mascotas registradas");
 			sentinel = true;
 			}
@@ -175,6 +184,7 @@ public class Main{
 			String idNumber = sc.nextLine();
 			System.out.println("------------------------------------------");
 			emergency.deleteVeterinary(idNumber);
+			System.out.println("------------------------------------------");
 		}
 	}
 
@@ -188,7 +198,7 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void newPet(){
-		System.out.println("==========================\n Formato de Registro de Nueva mascota \n==========================\n");
+		System.out.println("=====================================\n Formato de Registro de Nueva mascota \n=====================================\n");
 		System.out.print("Ingrese el nombre de la mascota: ");
 		String petName = sc.nextLine();
 
@@ -292,19 +302,38 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void removePet(){
-		System.out.println("Ingrese el nombre de la mascota");
-		String petName = sc.nextLine();
-		System.out.println("Ingrese el ID del propietario de la mascota");
-		String idNumber = sc.nextLine();
-		boolean find = false;
-		for(int i = 0; i < emergency.getPets().length && !find; i++){
-			if ((emergency.getPets()[i] != null && emergency.getPets()[i].getName().equalsIgnoreCase(petName)) && (emergency.getPets()[i].getPetOwner() != null && emergency.getPets()[i].getPetOwner().getIdNumber().equalsIgnoreCase(idNumber))) {
-				if (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO) {
+		boolean sentinel = false;
+
+		for (int i = 0; i < emergency.getPets().length && !sentinel; i++) {
+
+			if (emergency.getPets()[i] == null) {
+			System.out.println("------------------------------------------");
+			System.out.println("NO se pueden remover mascotas, porque no hay ninguna registrada");
+			sentinel = true;
+			}
+
+		} if(sentinel == false){
+			System.out.println("Ingrese el nombre de la mascota");
+			String petName = sc.nextLine();
+			System.out.println("Ingrese el ID del propietario de la mascota");
+			String idNumber = sc.nextLine();
+			boolean find = false;
+			for(int i = 0; i < emergency.getPets().length && !find; i++){
+				if ((emergency.getPets()[i] != null && emergency.getPets()[i].getName().equalsIgnoreCase(petName)) && (emergency.getPets()[i].getPetOwner() != null && emergency.getPets()[i].getPetOwner().getIdNumber().equalsIgnoreCase(idNumber))) {
+					if (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.ESPERANDO_SER_ATENDIDO) {
 					emergency.removePet(petName, idNumber);
-				}
+					}
 				find = true;
 			}
 		}
+		}
+
+
+
+
+
+
+
 	}
 
 
@@ -317,11 +346,13 @@ public class Main{
 	public void startConsultation(){
 		
 		System.out.println(emergency.showVets());
+		System.out.println("------------------------------------------");
 		if((emergency.showVets()).equals("No hay veterinarios registrados")){
+			System.out.println("------------------------------------------");
 			System.out.println();
 		} else{
-			System.out.println("Porfavor digita el numero de identificacion del veterinario que iniciara su consulta: ");
-			System.out.print("CC: ");
+			System.out.println("\nPorfavor digita el numero de identificacion del veterinario que iniciara su consulta: ");
+			System.out.print("Numero de identificacion: ");
 			String idNumber = sc.nextLine();
 			System.out.println("");
 			
@@ -329,7 +360,11 @@ public class Main{
 			
 			if(indexToStartConsult != -1){
 				System.out.println(emergency.startConsult(indexToStartConsult));
-			} else{System.out.println("No existe ningun veterinario con esa identificacion");}
+			} else{
+				System.out.println("------------------------------------------");
+				System.out.println("No existe ningun veterinario con esa identificacion");
+				System.out.println("------------------------------------------");
+			}
 			
 			System.out.println("===============================================================");
 		}
@@ -350,10 +385,12 @@ public class Main{
 		int indexVet, option = 0;
 		
 		System.out.println(emergency.showVets());
+		System.out.println("------------------------------------------");
 		if((emergency.showVets()).equals("No hay veterinarios registrados")){
+			System.out.println("------------------------------------------");
 			System.out.println();
 		} else{
-			System.out.println("Por favor ingrese el numero de identificacion del veterinario que desea finalizar su consulta:\n");
+			System.out.println("\nPor favor ingrese el numero de identificacion del veterinario que desea finalizar su consulta:");
 			System.out.print("Numero de identificacion: ");
 			idNumber = sc.nextLine();
 			System.out.print("Nombre de la mascota quien esta atendiendo: ");
@@ -401,7 +438,9 @@ public class Main{
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
 	public void petNumber(){
+		System.out.println("-----------------------------------------------------");
 		System.out.println("El numero de mascotas que faltan por atender son: " + emergency.petsNumber());
+		System.out.println("-----------------------------------------------------\n");
 	}
 
 
@@ -436,6 +475,8 @@ public class Main{
 			
 			if(emergency.getVets()[max] != null){
 				System.out.println("El veterinario que tuvo el mayor numero de consultas fue: " + emergency.getVets()[max].getName());
+			}else{
+				System.out.println("No existen veterinarios");
 			}
 			
 			int count =0;

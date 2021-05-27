@@ -75,7 +75,7 @@ public class Veterinary{
 	//to String
 	public String toString(){
 
-		String answer = "Numero de identificacion: " + idNumber + 
+		String answer = "\nNumero de identificacion: " + idNumber + 
 		"\nNombres : " + name +
 		"\nApellidos: " + lastName + 
 		"\nRegistro unico veterinario: " + idVeterinary +

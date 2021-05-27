@@ -68,7 +68,7 @@ public class Veterinary{
 	} 
 
 	public void setPetsAttended(int petsAttended){
-		this.petsAttended = petsAttended;
+		this.petsAttended += petsAttended;
 	} 
 
 

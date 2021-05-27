@@ -174,7 +174,7 @@ public class Main{
 
 			if (emergency.getPets()[i] != null) {
 			System.out.println("------------------------------------------");
-			System.out.print("NO se puede eliminar un veterinario, porque ya hay mascotas registradas");
+			System.out.print("NO se puede eliminar un veterinario, porque ya hay mascotas registradas\n");
 			sentinel = true;
 			}
 
@@ -306,7 +306,7 @@ public class Main{
 
 		for (int i = 0; i < emergency.getPets().length && !sentinel; i++) {
 
-			if (emergency.getPets()[i] == null) {
+			if (emergency.verifyIfPetsIsNull() == true) {
 			System.out.println("------------------------------------------");
 			System.out.println("NO se pueden remover mascotas, porque no hay ninguna registrada");
 			sentinel = true;
@@ -346,9 +346,7 @@ public class Main{
 	public void startConsultation(){
 		
 		System.out.println(emergency.showVets());
-		System.out.println("------------------------------------------");
 		if((emergency.showVets()).equals("No hay veterinarios registrados")){
-			System.out.println("------------------------------------------");
 			System.out.println();
 		} else{
 			System.out.println("\nPorfavor digita el numero de identificacion del veterinario que iniciara su consulta: ");
@@ -385,9 +383,7 @@ public class Main{
 		int indexVet, option = 0;
 		
 		System.out.println(emergency.showVets());
-		System.out.println("------------------------------------------");
 		if((emergency.showVets()).equals("No hay veterinarios registrados")){
-			System.out.println("------------------------------------------");
 			System.out.println();
 		} else{
 			System.out.println("\nPor favor ingrese el numero de identificacion del veterinario que desea finalizar su consulta:");

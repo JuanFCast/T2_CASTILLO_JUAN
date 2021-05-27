@@ -89,6 +89,14 @@ public class Main{
 				t2.closeCenter();
 				break;
 
+				case 9:
+				t2.showPets();
+				break;
+
+				case 10:
+				t2.showVets();
+				break;
+
 				default:
 				optionM = 0;
 				break;
@@ -233,7 +241,7 @@ public class Main{
 			 specie = Specie.PAJARO;
 		}
 
-		System.out.println("A continuacion ingresa la informacion del propietario de la mascota");
+		System.out.println("\nA continuacion ingresa la informacion del propietario de la mascota");
 		System.out.print("Numero de identificacion: ");
 		String idNumber = sc.nextLine();							
 		System.out.print("Nombre: ");
@@ -245,7 +253,7 @@ public class Main{
 
 		System.out.println("\nIngresa ahora los sintomas de la mascota");
 		String sintomas = sc.nextLine();
-		System.out.println("Selecciona el numero que corresponde a la prioridad para la mascota\n"+
+		System.out.println("\nSelecciona el numero que corresponde a la prioridad para la mascota\n"+
 		"(1) Necesita atencion de forma inmediata\n" + 
 		"(2) El tiempo de espera es maximo 10 minutos\n" + 
 		"(3) La atencion puede demorarse 60 minutos\n" +
@@ -315,7 +323,7 @@ public class Main{
 		} if(sentinel == false){
 			System.out.println("Ingrese el nombre de la mascota");
 			String petName = sc.nextLine();
-			System.out.println("Ingrese el ID del propietario de la mascota");
+			System.out.println("Ingrese el Numero de identificacion del propietario de la mascota");
 			String idNumber = sc.nextLine();
 			boolean find = false;
 			for(int i = 0; i < emergency.getPets().length && !find; i++){
@@ -469,8 +477,15 @@ public class Main{
 				}
 			}
 			
+
 			if(emergency.getVets()[max] != null){
-				System.out.println("El veterinario que tuvo el mayor numero de consultas fue: " + emergency.getVets()[max].getName());
+				if (max == 0) {
+					System.out.println("Ningun veterinario atendio una mascota, por lo tanto no hay mayor");
+
+				}else{
+					System.out.println("El veterinario que tuvo el mayor numero de consultas fue: " + emergency.getVets()[max].getName());
+				}
+				
 			}else{
 				System.out.println("No existen veterinarios");
 			}
@@ -505,6 +520,33 @@ public class Main{
 					 count4++;
 				} 
 			} System.out.println("La cantidad de mascotas atendidas de prioridad 5 fueron: "+ count4);
+
+			int percentage = 0;
+			int without = 0;
+			int total = 0;
+
+			if (emergency.verifyIfPetsIsNull() == false) {
+				for (int i = 0; i < emergency.getPets().length; i++) {
+					if (emergency.getPets()[i] != null) {
+						if (emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.SALIDA_SIN_ATENCION) {
+							without++;
+						}
+						total++;
+					} 
+					
+				} 
+				
+			}else{
+				System.out.println("No hay mascotas");
+			}
+
+			if (emergency.verifyIfPetsIsNull() == false) {
+				percentage = (without * 100)/total;
+				System.out.println("El porcentaje de mascotas que se fueron sin atender son: "+percentage+" %");
+			}
+
+
+			/*
 			int percentage = 0;
 			int without = 0;
 			int total = 0;
@@ -520,7 +562,7 @@ public class Main{
 					emergency.getPets()[i] = null;
 				}
 			}
-			
+			*/
 			optionM = 0;
 		}
 	}

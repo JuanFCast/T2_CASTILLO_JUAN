@@ -91,7 +91,7 @@ public class EmergencyCenter{
 				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order);
 				sentinel = true;
 				order ++;
-				System.out.print("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
+				System.out.println("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
 			}
 		}if (sentinel == false) {
 			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
@@ -114,7 +114,7 @@ public class EmergencyCenter{
 				pets[i] = new Pet(name, age, specie, petOwner, symptoms, priority, order, race);
 				sentinel = true;
 				order ++;
-				System.out.print("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
+				System.out.println("\n-----------------------------------------\nSe ingreso la mascota " + name + " correctamente\n-----------------------------------------\n");
 			}
 		}if (sentinel == false) {
 			System.out.println("\n-----------------------------------------\nSe supero el maximo de 120 mascotas, NO se pueden agregar mas\n-----------------------------------------\n");
@@ -137,15 +137,15 @@ public class EmergencyCenter{
 			if ((pets[i] != null && pets[i].getName().equalsIgnoreCase(name)) && (pets[i].getPetOwner() != null && pets[i].getPetOwner().getIdNumber().equalsIgnoreCase(idNumber))){
 				pets[i].setConsultationStatus(ConsultationStatus.SALIDA_SIN_ATENCION);
 				sentinel = true;
-				System.out.println("\n-------------------------------------------------\n");
-				System.out.println("La mascota fue enviada a Salida sin atencion\n");
-				System.out.println("\n-------------------------------------------------\n");
+				System.out.println("\n-------------------------------------------------");
+				System.out.println("La mascota fue enviada a Salida sin atencion");
+				System.out.println("-------------------------------------------------\n");
 
 			}
 		} if (sentinel == false) {
-			System.out.println("\n---------------------------------------------------------------------------------\n");
-			System.out.println("La mascota no se puede retirar porque no esta en Espera de ser atentida\n");
-			System.out.println("\n---------------------------------------------------------------------------------\n");
+			System.out.println("\n---------------------------------------------------------------------------------");
+			System.out.println("La mascota no se puede retirar porque no esta en Espera de ser atentida");
+			System.out.println("---------------------------------------------------------------------------------\n");
 		}
 	}
 

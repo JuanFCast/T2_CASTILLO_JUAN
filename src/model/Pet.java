@@ -100,13 +100,13 @@ public class Pet{
 	//to String
 	public String toString(){
 
-		String answer = "Nombres: " + name + 
-		"Edad: " + age + 
-		"Especie: " + specie + 
-		"Dueno: " + petOwner.toString() + 
-		"Sintomas: " + symptoms + 
-		"Prioridad: " + priority +
-		"Orden de llegada: " + order;
+		String answer = "\nNombres: " + name + 
+		"\nEdad: " + age + 
+		"\nEspecie: " + specie + 
+		"\nDueno: " + petOwner.toString() + 
+		"\nSintomas: " + symptoms + 
+		"\nPrioridad: " + priority +
+		"\nOrden de llegada: " + order;
 
 
 		

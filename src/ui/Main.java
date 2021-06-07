@@ -46,17 +46,200 @@ public class Main{
 	*/
 	public static void main(String[] args) {
 		Main t2 = new Main();
+		boolean sentinel;
+		int option;
+
 		System.out.println("------------------------------------------");
-		System.out.println("-----BIENVENID@ AL CENTRO VETERINARIO-----");
+		System.out.println("-----WELCOME TO THE VETERINARY CENTER-----");
 		System.out.println("------------------------------------------");
 
-		
-
-		
 		do{
-			optionM = t2.showMenu();
-			
-			switch(optionM){
+            option = t2.showGeneralMenu();
+            sentinel = t2.functions(option);
+        }while(sentinel);
+		
+
+	}
+	
+
+	//Metodos
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public int showGeneralMenu(){
+		int option;
+
+    	System.out.println("==Choose the service you want to enter==\n");
+        System.out.println(	"(1) Emergencies veterinaries\n" +
+                			"(2) Pet's kindergarten\n" +
+                			"(0) End program");
+        option = sc.nextInt();
+        sc.nextLine();
+
+        return option;
+    	
+	}
+
+
+
+
+	public boolean functions(int option){
+        boolean sentinel = true;
+        int election;
+        boolean cent = false;
+
+
+        switch (option) {
+            case 1:
+                do {
+                    election = emergencyMenu();
+                    cent = emergencyFunctions(election);
+                }while (cent);
+                break;
+
+            case 2:
+                do {
+                    //election = kindergartenMenu();
+                    //cent = kindergartenFunctions(election);
+                }while (cent);
+                break;
+
+            case 0:
+                sentinel = false;
+                break;
+            }
+
+        return sentinel;
+    }
+
+
+
+
+	/**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public int emergencyMenu(){
+		int option;
+
+    	System.out.println("MENU DE ACTIVIDADES\n");
+        System.out.println("A continuacion selecciona una opcion:");
+		System.out.println("(1) A\u00f1adir un nuevo veterinario");
+		System.out.println("(2) Eliminar un veterinario");
+		System.out.println("(3) Registrar una mascota");
+		System.out.println("(4) Retirar una mascota");
+		System.out.println("(5) Iniciar una consulta");
+		System.out.println("(6) Finalizar una consulta");
+		System.out.println("(7) Numero de mascotas que NO han sido atentidas");
+		System.out.println("(8) Cierre diario del Centro\n");
+
+		System.out.println("(0) End program\n");
+
+		System.out.print("Opcion: ");
+		option = sc.nextInt();
+		sc.nextLine();
+		
+		return option;
+    	
+	}
+
+
+	public boolean emergencyFunctions(int option){
+        boolean sentinel = true;
+
+        switch(option){
+				case 1:
+				addVeterinay();
+				break;
+
+				case 2:
+				deleteVet();
+				break;
+
+				case 3:
+				newPet();
+				break;
+
+				case 4:
+				removePet();
+				break;
+				
+				case 5:
+				startConsultation();
+				break;
+
+				case 6:
+				finishConsultation();
+				break;
+
+				case 7:
+				petNumber();
+				break;
+
+				case 8:
+				closeCenter();
+				break;
+
+				case 9:
+				//showPets();
+				break;
+
+				case 10:
+				//showVets();
+				break;
+
+				default:
+				sentinel = false;
+				break;
+			}
+
+        return sentinel;
+    }
+
+
+
+    /**
+	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
+	* pre: The IPC variable must have the values from the table or the values entered by the user. 
+	* @param pib int, the parameter is that the program can only continue if the values are integers.
+	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	*/
+	public int kindergartenMenu(){
+		int option;
+
+    	System.out.println("MENU DE ACTIVIDADES\n");
+        System.out.println("A continuacion selecciona una opcion:");
+		System.out.println("(1) A\u00f1adir un nuevo veterinario");
+		System.out.println("(2) Eliminar un veterinario");
+		System.out.println("(3) Registrar una mascota");
+		System.out.println("(4) Retirar una mascota");
+		System.out.println("(5) Iniciar una consulta");
+		System.out.println("(6) Finalizar una consulta");
+		System.out.println("(7) Numero de mascotas que NO han sido atentidas");
+		System.out.println("(8) Cierre diario del Centro\n");
+
+		System.out.println("(0) End program\n");
+
+		System.out.print("Opcion: ");
+		option = sc.nextInt();
+		sc.nextLine();
+		
+		return option;
+    	
+	}
+
+
+
+	public boolean kindergartenFunctions(int option){
+        boolean sentinel = true;
+
+        switch(option){
 				case 1:
 				t2.addVeterinay();
 				break;
@@ -98,47 +281,19 @@ public class Main{
 				break;
 
 				default:
-				optionM = 0;
+				sentinel = false;
 				break;
 			}
-			
-		}while(optionM != 0);
-	}
+
+        return sentinel;
+    }
 	
 
-	//Metodos
 
 
-	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
-	*/
-	public int showMenu(){
-		int option;
 
-    	System.out.println("MENU DE ACTIVIDADES\n");
-        System.out.println("A continuacion selecciona una opcion:");
-		System.out.println("(1) A\u00f1adir un nuevo veterinario");
-		System.out.println("(2) Eliminar un veterinario");
-		System.out.println("(3) Registrar una mascota");
-		System.out.println("(4) Retirar una mascota");
-		System.out.println("(5) Iniciar una consulta");
-		System.out.println("(6) Finalizar una consulta");
-		System.out.println("(7) Numero de mascotas que NO han sido atentidas");
-		System.out.println("(8) Cierre diario del Centro\n");
 
-		System.out.println("(0) Finalizar programa\n");
-
-		System.out.print("Opcion: ");
-		option = sc.nextInt();
-		sc.nextLine();
-		
-		return option;
-    	
-	}
-
+    //TAREA INTEGRADORA 2
 	
 	/**
 	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
@@ -546,26 +701,20 @@ public class Main{
 			}
 
 
-			/*
-			int percentage = 0;
-			int without = 0;
-			int total = 0;
-			for (int i = 0; i < emergency.getPets().length; i++) {
-				if (emergency.getPets()[i] != null && emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.SALIDA_SIN_ATENCION) {
-					without++;
-				} total++;
-			} 
-			percentage = (without * 100)/total;
-			System.out.println("El porcentaje de mascotas que se fueron sin atender son: "+percentage+" %");
-			for (int i = 0; i < emergency.getPets().length; i++) {
-				if (emergency.getPets()[i] != null && emergency.getPets()[i].getConsultationStatus() == ConsultationStatus.SALIDA_AUTORIZADA) {
-					emergency.getPets()[i] = null;
-				}
-			}
-			*/
 			optionM = 0;
 		}
 	}
+
+
+	//TAREA INTEGRADORA 3
+
+
+	
+
+	
+
+
+
 
 }
 	

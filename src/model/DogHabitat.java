@@ -5,7 +5,7 @@ public class DogHabitat extends PetHabitat{
 
 
     public DogHabitat(String id, double length, double width, int amountToys) {
-        super(id, length, width, useState);
+        super(id, length, width);
         this.amountToys = amountToys;
     }
 

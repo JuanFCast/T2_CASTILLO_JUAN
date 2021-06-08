@@ -7,6 +7,8 @@ public class Pet{
 	private String symptoms;
 	private int order;
 	private String race;
+	private int dyasStayed;
+
 
 	// relaciones
 	private Priority priority;
@@ -40,6 +42,30 @@ public class Pet{
 		this.race = race;
 		consultationStatus = ConsultationStatus.ESPERANDO_SER_ATENDIDO;
 	}
+
+	public Pet(Specie specie, String race, String name, int age, PetOwner petOwner, int days){
+		this.specie = specie;
+		this.race = race;
+		this.name = name;
+		this.age = age;
+		this.petOwner = petOwner;
+		dyasStayed = days;
+		}
+	
+	public Pet(Specie specie, String name, int age, PetOwner petOwner, int days){
+		this.specie = specie;
+		this.race = race;
+		this.name = name;
+		this.age = age;
+		this.petOwner = petOwner;
+		dyasStayed = days; 
+	}
+
+
+
+
+
+
 
 	
 	//get 

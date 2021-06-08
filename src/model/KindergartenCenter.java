@@ -6,32 +6,32 @@ public class KindergartenCenter{
 	private final int COLUMNMATRIX = 5;
 
     //for cats
-	private static final int MIN_CAT_ROWS = 0;
-	private static final int MAX_CAT_ROWS = 2;
+	private static final int MIN_CAT_ROW = 0;
+	private static final int MAX_CAT_ROW = 2;
 	private static final int MIN_CAT_COL = 0;
 	private static final int MAX_CAT_COL = 2;
 
 	//for dogs
-	private static final int MIN_DOG_ROWS = 3;
-	private static final int MAX_DOG_ROWS = 5;
+	private static final int MIN_DOG_ROW = 3;
+	private static final int MAX_DOG_ROW = 5;
 	private static final int MIN_DOG_COL = 0;
 	private static final int MAX_DOG_COL = 2;
 
 	//for reptiles
-	private static final int MIN_REPTILE_ROWS = 0;
-	private static final int MAX_REPTILE_ROWS = 1;
+	private static final int MIN_REPTILE_ROW = 0;
+	private static final int MAX_REPTILE_ROW = 1;
 	private static final int MIN_REPTILE_COL = 3;
 	private static final int MAX_REPTILE_COL = 4;
 
 	//for rabbits
-	private static final int MIN_RABBIT_ROWS = 2;
-	private static final int MAX_RABBIT_ROWS = 3;
+	private static final int MIN_RABBIT_ROW = 2;
+	private static final int MAX_RABBIT_ROW = 3;
 	private static final int MIN_RABBIT_COL = 3;
 	private static final int MAX_RABBIT_COL = 4;
 
 	//for birds
-	private static final int MIN_BIRD_ROWS = 4;
-	private static final int MAX_BIRD_ROWS = 5;
+	private static final int MIN_BIRD_ROW = 4;
+	private static final int MAX_BIRD_ROW = 5;
 	private static final int MIN_BIRD_COL = 3;
 	private static final int MAX_BIRD_COL = 4;
 
@@ -46,11 +46,11 @@ public class KindergartenCenter{
 
 	//organize habitats
 	private void createAreas(){
-		organizeHabitats(MIN_DOG_ROWS, MAX_DOG_ROWS, MIN_DOG_COL, MAX_DOG_COL, 1);
-		organizeHabitats(MIN_CAT_ROWS, MAX_CAT_ROWS, MIN_CAT_COL, MAX_CAT_COL, 2);
-		organizeHabitats(MIN_BIRD_ROWS, MAX_BIRD_ROWS, MIN_BIRD_COL, MAX_BIRD_COL, 3);
-		organizeHabitats(MIN_REPTILE_ROWS, MAX_REPTILE_ROWS, MIN_REPTILE_COL, MAX_REPTILE_COL, 4);
-		organizeHabitats(MIN_RABBIT_ROWS, MAX_RABBIT_ROWS, MIN_RABBIT_COL, MAX_RABBIT_COL, 5);
+		organizeHabitats(MIN_DOG_ROW, MAX_DOG_ROW, MIN_DOG_COL, MAX_DOG_COL, 1);
+		organizeHabitats(MIN_CAT_ROW, MAX_CAT_ROW, MIN_CAT_COL, MAX_CAT_COL, 2);
+		organizeHabitats(MIN_BIRD_ROW, MAX_BIRD_ROW, MIN_BIRD_COL, MAX_BIRD_COL, 3);
+		organizeHabitats(MIN_REPTILE_ROW, MAX_REPTILE_ROW, MIN_REPTILE_COL, MAX_REPTILE_COL, 4);
+		organizeHabitats(MIN_RABBIT_ROW, MAX_RABBIT_ROW, MIN_RABBIT_COL, MAX_RABBIT_COL, 5);
 	}
 
 	private void organizeHabitats(int minRows, int maxRows, int minCol, int maxCol, int species){
@@ -61,29 +61,29 @@ public class KindergartenCenter{
 
 				switch(species){
 					case 1:
-					habitats[rows][col] = new DogHabitat( "DH" + contArea, 3.5, 4.5, UseState.EMPTY, 5);
+					habitats[rows][col] = new DogHabitat( "DH" + contArea, 3.5, 4.5, 5);
 					break;
 
 					case 2:
-					habitats[rows][col] = new CatHabitat( "CH" + contArea, 4.5, 5.5, UseState.EMPTY, 7.5, 2.5);
+					habitats[rows][col] = new CatHabitat( "CH" + contArea, 4.5, 5.5, 7.5, 2.5);
 					break;
 
 					case 3:
-					habitats[rows][col] = new BirdHabitat( "BH" + contArea, 6.5, 2.5, UseState.EMPTY, 7.5, 4, CageType.CAGE_IN_LAND);
+					habitats[rows][col] = new BirdHabitat( "BH" + contArea, 6.5, 2.5, 7.5, 4, CageType.CAGE_IN_LAND);
 					if( rows == 5 ){
-						habitats[rows][col] = new BirdHabitat( "BH" + contArea, 6.5, 2.5, UseState.EMPTY, 7.5, 4, CageType.HANGING_CAGE);
+						habitats[rows][col] = new BirdHabitat( "BH" + contArea, 6.5, 2.5, 7.5, 4, CageType.HANGING_CAGE);
 					}
 					break;
 
 					case 4:
-					habitats[rows][col] = new ReptileHabitat( "ReH" + contArea, 8.5, 7.5, UseState.EMPTY,  "ACETATE", ReptileType.FOR_AMPHIBIANS);
+					habitats[rows][col] = new ReptileHabitat( "ReH" + contArea, 8.5, 7.5, "ACETATE", ReptileTypeH.FOR_AMPHIBIANS);
 					if( rows == 1  ){
-						habitats[rows][col] = new ReptileHabitat( "ReH" + contArea, 8.5, 7.5, UseState.EMPTY, "ACRYLIC", ReptileType.ONLY_LAND);
+						habitats[rows][col] = new ReptileHabitat( "ReH" + contArea, 8.5, 7.5, "ACRYLIC", ReptileTypeH.ONLY_LAND);
 					}
 					break;
 
 					case 5:
-					habitats[rows][col] = new RabbitsHabitat( "RaH" + contArea, 10, 5.5, UseState.EMPTY, "LETTUCE", 6);
+					habitats[rows][col] = new RabbitHabitat( "RaH" + contArea, 10, 5.5, "LETTUCE", 6);
 					break;
 				}		
 				contArea++;
@@ -97,9 +97,9 @@ public class KindergartenCenter{
 	public boolean verifyIfThereRoomsForCAT(){
 		boolean confirmation = false;
 		
-		for(int i = ROWMINIMUM_FORCAT; (i <= ROWLIMIT_FORCAT) && !confirmation; i++){
-			for(int j = COLUMNMINIMUM_FORCAT; (j <= COLUMNLIMIT_FORCAT) && !confirmation; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_CAT_ROW; (i <= MAX_CAT_ROW) && !confirmation; i++){
+			for(int j = MIN_CAT_COL; (j <= MAX_CAT_COL) && !confirmation; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					confirmation = true;
 				} else{confirmation = false;}
 			}
@@ -112,13 +112,13 @@ public class KindergartenCenter{
 		boolean sentinel = false;
 		String confirmation = "";
 		
-		for(int i = ROWMINIMUM_FORCAT; (i <= ROWLIMIT_FORCAT) && !sentinel; i++){
-			for(int j = COLUMNMINIMUM_FORCAT; (j <= COLUMNLIMIT_FORCAT) && !sentinel; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_CAT_ROW; (i <= MAX_CAT_ROW) && !sentinel; i++){
+			for(int j = MIN_CAT_COL; (j <= MAX_CAT_COL) && !sentinel; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					sentinel = true;
-					habitats[i][j].setPetInsideTheHabitat(cat);
-					habitats[i][j].setUseType(UseState.OCCUPIED_SICK);
-					confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+					habitats[i][j].setPetHabitat(cat);
+					habitats[i][j].setUseState(UseState.OCCUPIED_SICK);
+					confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 				}
 			}
 		}
@@ -130,9 +130,9 @@ public class KindergartenCenter{
 	public boolean verifyIfThereRoomsForDOG(){
 		boolean confirmation = false;
 		
-		for(int i = ROWMINIMUM_FORDOG; (i <= ROWLIMIT_FORDOG) && !confirmation; i++){
-			for(int j = COLUMNMINIMUM_FORDOG; (j <= COLUMNLIMIT_FORDOG) && !confirmation; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_DOG_ROW; (i <= MAX_DOG_ROW) && !confirmation; i++){
+			for(int j = MIN_DOG_COL; (j <= MAX_DOG_COL) && !confirmation; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					confirmation = true;
 				} else{confirmation = false;}
 			}
@@ -145,13 +145,13 @@ public class KindergartenCenter{
 		boolean sentinel = false;
 		String confirmation = "";
 		
-		for(int i = ROWMINIMUM_FORDOG; (i <= ROWLIMIT_FORDOG) && !sentinel; i++){
-			for(int j = COLUMNMINIMUM_FORDOG; (j <= COLUMNLIMIT_FORDOG) && !sentinel; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_DOG_ROW; (i <= MAX_DOG_ROW) && !sentinel; i++){
+			for(int j = MIN_DOG_COL; (j <= MAX_DOG_COL) && !sentinel; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					sentinel = true;
-					habitats[i][j].setPetInsideTheHabitat(dog);
-					habitats[i][j].setUseType(UseState.OCCUPIED_SICK);
-					confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+					habitats[i][j].setPetHabitat(dog);
+					habitats[i][j].setUseState(UseState.OCCUPIED_SICK);
+					confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 				}
 			}
 		}
@@ -163,9 +163,9 @@ public class KindergartenCenter{
 	public boolean verifyIfThereRoomsForREPTILE(){
 		boolean confirmation = false;
 		
-		for(int i = ROWMINIMUM_FORREPTILE; (i <= ROWLIMIT_FORREPTILE) && !confirmation; i++){
-			for(int j = COLUMNMINIMUM_FORREPTILE; (j <= COLUMNLIMIT_FORREPTILE) && !confirmation; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_REPTILE_ROW; (i <= MAX_REPTILE_ROW) && !confirmation; i++){
+			for(int j = MIN_REPTILE_COL; (j <= MAX_REPTILE_COL) && !confirmation; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					confirmation = true;
 				} else{confirmation = false;}
 			}
@@ -178,13 +178,13 @@ public class KindergartenCenter{
 		boolean sentinel = false;
 		String confirmation = "";
 		
-		for(int i = ROWMINIMUM_FORREPTILE; (i <= ROWLIMIT_FORREPTILE) && !sentinel; i++){
-			for(int j = COLUMNMINIMUM_FORREPTILE; (j <= COLUMNLIMIT_FORREPTILE) && !sentinel; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_REPTILE_ROW; (i <= MAX_REPTILE_ROW) && !sentinel; i++){
+			for(int j = MIN_REPTILE_COL; (j <= MAX_REPTILE_COL) && !sentinel; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					sentinel = true;
-					habitats[i][j].setPetInsideTheHabitat(reptile);
-					habitats[i][j].setUseType(UseState.OCCUPIED_SICK);
-					confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+					habitats[i][j].setPetHabitat(reptile);
+					habitats[i][j].setUseState(UseState.OCCUPIED_SICK);
+					confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 				}
 			}
 		}
@@ -196,9 +196,9 @@ public class KindergartenCenter{
 	public boolean verifyIfThereRoomsForRABBIT(){
 		boolean confirmation = false;
 		
-		for(int i = ROWMINIMUM_FORRABBIT; (i <= ROWLIMIT_FORRABBIT) && !confirmation; i++){
-			for(int j = COLUMNMINIMUM_FORRABBIT; (j <= COLUMNLIMIT_FORRABBIT) && !confirmation; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_RABBIT_ROW; (i <= MAX_RABBIT_ROW) && !confirmation; i++){
+			for(int j = MIN_RABBIT_COL; (j <= MAX_RABBIT_COL) && !confirmation; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					confirmation = true;
 				} else{confirmation = false;}
 			}
@@ -211,13 +211,13 @@ public class KindergartenCenter{
 		boolean sentinel = false;
 		String confirmation = "";
 		
-		for(int i = ROWMINIMUM_FORRABBIT; (i <= ROWLIMIT_FORRABBIT) && !sentinel; i++){
-			for(int j = COLUMNMINIMUM_FORRABBIT; (j <= COLUMNLIMIT_FORRABBIT) && !sentinel; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_RABBIT_ROW; (i <= MAX_RABBIT_ROW) && !sentinel; i++){
+			for(int j = MIN_RABBIT_COL; (j <= MAX_RABBIT_COL) && !sentinel; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					sentinel = true;
-					habitats[i][j].setPetInsideTheHabitat(rabbit);
-					habitats[i][j].setUseType(UseState.OCCUPIED_SICK);
-					confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+					habitats[i][j].setPetHabitat(rabbit);
+					habitats[i][j].setUseState(UseState.OCCUPIED_SICK);
+					confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 				}
 			}
 		}
@@ -229,9 +229,9 @@ public class KindergartenCenter{
 	public boolean verifyIfThereRoomsForBIRD(){
 		boolean confirmation = false;
 		
-		for(int i = ROWMINIMUM_FORBIRD; (i <= ROWLIMIT_FORBIRD) && !confirmation; i++){
-			for(int j = COLUMNMINIMUM_FORBIRD; (j <= COLUMNLIMIT_FORBIRD) && !confirmation; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_BIRD_ROW; (i <= MAX_BIRD_ROW) && !confirmation; i++){
+			for(int j = MIN_BIRD_COL; (j <= MAX_BIRD_COL) && !confirmation; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					confirmation = true;
 				} else{confirmation = false;}
 			}
@@ -244,13 +244,13 @@ public class KindergartenCenter{
 		boolean sentinel = false;
 		String confirmation = "";
 		
-		for(int i = ROWMINIMUM_FORBIRD; (i <= ROWLIMIT_FORBIRD) && !sentinel; i++){
-			for(int j = COLUMNMINIMUM_FORBIRD; (j <= COLUMNLIMIT_FORBIRD) && !sentinel; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() == null){
+		for(int i = MIN_BIRD_ROW; (i <= MAX_BIRD_ROW) && !sentinel; i++){
+			for(int j = MIN_BIRD_COL; (j <= MAX_BIRD_COL) && !sentinel; j++){
+				if(habitats[i][j].getPetHabitat() == null){
 					sentinel = true;
-					habitats[i][j].setPetInsideTheHabitat(bird);
-					habitats[i][j].setUseType(UseState.OCCUPIED_SICK);
-					confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+					habitats[i][j].setPetHabitat(bird);
+					habitats[i][j].setUseState(UseState.OCCUPIED_SICK);
+					confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 				}
 			}
 		}
@@ -265,62 +265,62 @@ public class KindergartenCenter{
 		boolean sentinel2 = false;
 		
 		if(option == 1){
-			for(int i = ROWMINIMUM_FORDOG; (i <= ROWLIMIT_FORDOG) && !sentinel; i++){
-				for(int j = COLUMNMINIMUM_FORDOG; (j <= COLUMNLIMIT_FORDOG) && !sentinel2; j++){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+			for(int i = MIN_DOG_ROW; (i <= MAX_DOG_ROW) && !sentinel; i++){
+				for(int j = MIN_DOG_COL; (j <= MAX_DOG_COL) && !sentinel2; j++){
+					if(habitats[i][j].getPetHabitat() == null){
 						sentinel = true;
 						sentinel2 = true;
-						habitats[i][j].setPetInsideTheHabitat(newPet);
-						habitats[i][j].setUseType(UseState.OCCUPIED_HEALTHY);
-						confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+						habitats[i][j].setPetHabitat(newPet);
+						habitats[i][j].setUseState(UseState.OCCUPIED_HEALTHY);
+						confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 					}
 				}
 			}
 		} else if(option == 2){
-			for(int i = ROWMINIMUM_FORCAT; (i <= ROWLIMIT_FORCAT) && !sentinel; i++){
-				for(int j = COLUMNMINIMUM_FORCAT; (j <= COLUMNLIMIT_FORCAT) && !sentinel2; j++){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+			for(int i = MIN_CAT_ROW; (i <= MAX_CAT_ROW) && !sentinel; i++){
+				for(int j = MIN_CAT_COL; (j <= MAX_CAT_COL) && !sentinel2; j++){
+					if(habitats[i][j].getPetHabitat() == null){
 						sentinel = true;
 						sentinel2 = true;
-						habitats[i][j].setPetInsideTheHabitat(newPet);
-						habitats[i][j].setUseType(UseState.OCCUPIED_HEALTHY);
-						confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+						habitats[i][j].setPetHabitat(newPet);
+						habitats[i][j].setUseState(UseState.OCCUPIED_HEALTHY);
+						confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 					}
 				}
 			}
 		} else if(option == 3){
-			for(int i = ROWMINIMUM_FORRABBIT; (i <= ROWLIMIT_FORRABBIT) && !sentinel; i++){
-				for(int j = COLUMNMINIMUM_FORRABBIT; (j <= COLUMNLIMIT_FORRABBIT) && !sentinel2; j++){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+			for(int i = MIN_RABBIT_ROW; (i <= MAX_RABBIT_ROW) && !sentinel; i++){
+				for(int j = MIN_RABBIT_COL; (j <= MAX_RABBIT_COL) && !sentinel2; j++){
+					if(habitats[i][j].getPetHabitat() == null){
 						sentinel = true;
 						sentinel2 = true;
-						habitats[i][j].setPetInsideTheHabitat(newPet);
-						habitats[i][j].setUseType(UseState.OCCUPIED_HEALTHY);
-						confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+						habitats[i][j].setPetHabitat(newPet);
+						habitats[i][j].setUseState(UseState.OCCUPIED_HEALTHY);
+						confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 					}
 				}
 			}
 		} else if(option == 4){
-			for(int i = ROWMINIMUM_FORREPTILE; (i <= ROWLIMIT_FORREPTILE) && !sentinel; i++){
-				for(int j = COLUMNMINIMUM_FORREPTILE; (j <= COLUMNLIMIT_FORREPTILE) && !sentinel2; j++){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+			for(int i = MIN_REPTILE_ROW; (i <= MAX_REPTILE_ROW) && !sentinel; i++){
+				for(int j = MIN_REPTILE_COL; (j <= MAX_REPTILE_COL) && !sentinel2; j++){
+					if(habitats[i][j].getPetHabitat() == null){
 						sentinel = true;
 						sentinel2 = true;
-						habitats[i][j].setPetInsideTheHabitat(newPet);
-						habitats[i][j].setUseType(UseState.OCCUPIED_HEALTHY);
-						confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+						habitats[i][j].setPetHabitat(newPet);
+						habitats[i][j].setUseState(UseState.OCCUPIED_HEALTHY);
+						confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 					}
 				}
 			}
 		} else if(option == 5){
-			for(int i = ROWMINIMUM_FORBIRD; (i <= ROWLIMIT_FORBIRD) && !sentinel; i++){
-				for(int j = COLUMNMINIMUM_FORBIRD; (j <= COLUMNLIMIT_FORBIRD) && !sentinel2; j++){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+			for(int i = MIN_BIRD_ROW; (i <= MAX_BIRD_ROW) && !sentinel; i++){
+				for(int j = MIN_BIRD_COL; (j <= MAX_BIRD_COL) && !sentinel2; j++){
+					if(habitats[i][j].getPetHabitat() == null){
 						sentinel = true;
 						sentinel2 = true;
-						habitats[i][j].setPetInsideTheHabitat(newPet);
-						habitats[i][j].setUseType(UseState.OCCUPIED_HEALTHY);
-						confirmation = "The pet was moved to the habitat " + habitats[i][j].getIdNumber() + ", located in the pet nursery";
+						habitats[i][j].setPetHabitat(newPet);
+						habitats[i][j].setUseState(UseState.OCCUPIED_HEALTHY);
+						confirmation = "The pet was moved to the habitat " + habitats[i][j].getId() + ", located in the pet nursery";
 					}
 				}
 			}
@@ -339,13 +339,13 @@ public class KindergartenCenter{
 		
 		for(int i = 0; (i < ROWMATRIX) && !sentinel; i++){
 			for(int j = 0; (j < COLUMNMATRIX) && !sentinel2; j++){
-				if(habitats[i][j].getPetInsideTheHabitat() != null){
-					if((habitats[i][j].getPetInsideTheHabitat().getName()).equals(namePet)){
+				if(habitats[i][j].getPetHabitat() != null){
+					if((habitats[i][j].getPetHabitat().getName()).equals(namePet)){
 						sentinel = true;
 						sentinel2 = true;
-						confirmation += "\nThe pet " + namePet + " is found in the habitat " + habitats[i][j].getIdNumber() + "\nYour current state is "; 
+						confirmation += "\nThe pet " + namePet + " is found in the habitat " + habitats[i][j].getId() + "\nYour current state is "; 
 						
-						if(habitats[i][j].getUseType() == UseState.OCCUPIED_SICK){
+						if(habitats[i][j].getUseState() == UseState.OCCUPIED_SICK){
 							confirmation += "SICK\n===================================================";
 						} else{
 							confirmation += "FURY\n===================================================";
@@ -395,7 +395,7 @@ public class KindergartenCenter{
 		
 		for(int i = 0; (i < ROWMATRIX) && !sentinel; i++){
 			for(int j = 0; (j < COLUMNMATRIX) && !sentinel2; j++){
-				if(habitats[i][j].getIdNumber().equals(id)){
+				if(habitats[i][j].getId().equals(id)){
 					sentinel = true;
 					sentinel2 = true;
 					info = habitats[i][j].toString();
@@ -417,37 +417,37 @@ public class KindergartenCenter{
 		int countD = 0, countC = 0, countR = 0, countL = 0, countB = 0;
 		int healthy = 0, sick = 0;
 		
-		for(int i = ROWMINIMUM_FORCAT; i <= ROWLIMIT_FORCAT; i++){
-			for(int j = COLUMNMINIMUM_FORCAT; j <= COLUMNLIMIT_FORCAT; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+		for(int i = MIN_CAT_ROW; i <= MAX_CAT_ROW; i++){
+			for(int j = MIN_CAT_COL; j <= MAX_CAT_COL; j++){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countC++;
 				}
 			}
 		}
-		for(int i = ROWMINIMUM_FORDOG; i <= ROWLIMIT_FORDOG; i++){
-			for(int j = COLUMNMINIMUM_FORDOG; j <= COLUMNLIMIT_FORDOG; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+		for(int i = MIN_DOG_ROW; i <= MAX_DOG_ROW; i++){
+			for(int j = MIN_DOG_COL; j <= MAX_DOG_COL; j++){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countD++;
 				}
 			}
 		}
-		for(int i = ROWMINIMUM_FORRABBIT; i <= ROWLIMIT_FORRABBIT; i++){
-			for(int j = COLUMNMINIMUM_FORRABBIT; j <= COLUMNLIMIT_FORRABBIT; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+		for(int i = MIN_RABBIT_ROW; i <= MAX_RABBIT_ROW; i++){
+			for(int j = MIN_RABBIT_COL; j <= MAX_RABBIT_COL; j++){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countR++;
 				}
 			}
 		}
-		for(int i = ROWMINIMUM_FORREPTILE; i <= ROWLIMIT_FORREPTILE; i++){
-			for(int j = COLUMNMINIMUM_FORREPTILE; j <= COLUMNLIMIT_FORREPTILE; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+		for(int i = MIN_REPTILE_ROW; i <= MAX_REPTILE_ROW; i++){
+			for(int j = MIN_REPTILE_COL; j <= MAX_REPTILE_COL; j++){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countL++;
 				}
 			}
 		}
-		for(int i = ROWMINIMUM_FORBIRD; i <= ROWLIMIT_FORBIRD; i++){
-			for(int j = COLUMNMINIMUM_FORBIRD; j <= COLUMNLIMIT_FORBIRD; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+		for(int i = MIN_BIRD_ROW; i <= MAX_BIRD_ROW; i++){
+			for(int j = MIN_BIRD_COL; j <= MAX_BIRD_COL; j++){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countB++;
 				}
 			}
@@ -455,9 +455,9 @@ public class KindergartenCenter{
 		
 		for(int i = 0; i < ROWMATRIX; i++){
 			for(int j = 0; j < COLUMNMATRIX; j++){
-				if(habitats[i][j].getUseType() != UseState.EMPTY){
+				if(habitats[i][j].getUseState() != UseState.EMPTY){
 					countGeneral++;
-					if(habitats[i][j].getUseType() == UseState.OCCUPIED_HEALTHY){
+					if(habitats[i][j].getUseState() == UseState.OCCUPIED_HEALTHY){
 						healthy++;
 					} else{sick++;}
 				}
@@ -496,7 +496,7 @@ public class KindergartenCenter{
 		for(int i = 0; i < ROWMATRIX; i++){
 			for(int j = 0; j < COLUMNMATRIX; j++){
 				if(habitats[i][j] != null){
-					if(habitats[i][j].getPetInsideTheHabitat() == null){
+					if(habitats[i][j].getPetHabitat() == null){
 					confirmation += "En la posicion: FILA-" + i + "/COLUMNA-" + j + 
 									"\nSe encuentra vacio el habitat\n";
 					} else{

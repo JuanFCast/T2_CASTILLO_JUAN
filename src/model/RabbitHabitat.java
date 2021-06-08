@@ -1,11 +1,11 @@
 package model;
 
-public class RabbitHabitat{
+public class RabbitHabitat extends PetHabitat{
 	private String plantType;
     private int amountOfPlants;
 
-    public RabbitHabitat(String id, String longHabitat, String width, String plantType, int amountOfPlants) {
-        super(id, length, width, useState);
+    public RabbitHabitat(String id, double length, double width, String plantType, int amountOfPlants) {
+        super(id, length, width);
         this.plantType = plantType;
         this.amountOfPlants = amountOfPlants;
     }

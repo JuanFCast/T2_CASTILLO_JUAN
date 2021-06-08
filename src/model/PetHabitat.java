@@ -6,13 +6,13 @@ public abstract class PetHabitat{
     private double length;
     private double width;
     private UseState useState;
-    private Pet pet;
+    private Pet petHabitat;
 
-    public PetHabitat(String id, double length, double width, UseState useState) {
+    public PetHabitat(String id, double length, double width) {
         this.id = id;
         this.length = length;
         this.width = width;
-        this.useState = UseState.EMPTY;
+        useState = UseState.EMPTY;
     }
 
     //getters
@@ -24,14 +24,14 @@ public abstract class PetHabitat{
         return useState;
     }
 
-    public Pet getPet() {
-        return pet;
+    public Pet getPetHabitat() {
+        return petHabitat;
     }
 
 
     //setters
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPetHabitat(Pet petHabitat) {
+        this.petHabitat = petHabitat;
     }
 
     public void setUseState(UseState useState) {

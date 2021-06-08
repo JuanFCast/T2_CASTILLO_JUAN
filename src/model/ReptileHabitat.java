@@ -1,13 +1,13 @@
 package model;
 
-public class ReptileHabitat{
+public class ReptileHabitat extends PetHabitat{
 	private String material;
 	private ReptileTypeH reptileTypeH;
 
 
 
-    public DogHabitat(String id, double length, double width, String material, ReptileTypeH reptileTypeH){
-        super(id, length, width, useState);
+    public ReptileHabitat(String id, double length, double width, String material, ReptileTypeH reptileTypeH){
+        super(id, length, width);
         this.material = material;
         this.reptileTypeH = reptileTypeH;
     }

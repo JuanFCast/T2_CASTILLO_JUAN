@@ -1,13 +1,13 @@
 package model;
 
-public class BirdHabitat{
+public class BirdHabitat extends PetHabitat{
     private double height;
     private int capacity;
     private CageType cageType;
 
 
-    public BirdHabitat(String id, String longHabitat, String width, String height, int capacity, CageType cageType) {
-        super(id, length, width, useState);
+    public BirdHabitat(String id, double length, double width, double height, int capacity, CageType cageType) {
+        super(id, length, width);
         this.height = height;
         this.capacity = capacity;
         this.cageType = cageType;

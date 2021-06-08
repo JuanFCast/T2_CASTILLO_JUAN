@@ -2,7 +2,8 @@ package ui;                                             // javac -cp src src/ui/
 														// java -cp bin ui.Main
 														// javadoc -cp src -subpackages model:ui -d docs/javadoc/                                        
 import model.EmergencyCenter;
-import model.KindegartenCenter;
+import model.KindergartenCenter;
+import model.Pet;
 import model.Specie;
 import model.ConsultationStatus;
 import model.Priority;
@@ -31,16 +32,18 @@ public class Main{
 
 
 	/**
-	* Description: Esta variable se encarga de cerrar el programa
+	* Description: Esta clase se encarga de unir los metodos que sirven para el funcionamiento del programa 
 	*/ 
-	private static int optionM;
+	private KindergartenCenter ki;
+
+
 	
 
 	//No se que colocar aqui
 	public Main() {
     sc = new Scanner(System.in);
     emergency = new EmergencyCenter();
-	optionM = 0;
+    ki = new KindergartenCenter();
     }
 
 
@@ -107,8 +110,8 @@ public class Main{
 
             case 2:
                 do {
-                    //election = kindergartenMenu();
-                    //cent = kindergartenFunctions(election);
+                    election = kindergartenMenu();
+                    cent = kindergartenFunctions(election);
                 }while (cent);
                 break;
 
@@ -241,23 +244,23 @@ public class Main{
 
         switch(option){
 				case 1:
-				addVeterinay();
+				addPetInPetDaycare();
 				break;
 
 				case 2:
-				deleteVet();
+				findPetInPetDaycare();
 				break;
 
 				case 3:
-				newPet();
+				showPetDaycareMap();
 				break;
 
 				case 4:
-				removePet();
+				showInfoHabitat();
 				break;
 				
 				case 5:
-				startConsultation();
+				showStats();
 				break;
 
 				default:
@@ -681,20 +684,286 @@ public class Main{
 			}
 
 
-			optionM = 0;
 		}
 	}
 
 
 	//TAREA INTEGRADORA 3
 
+	/*	
+	public void transferToPetDaycare(Pet petToTransfer){
+		
+		if(petToTransfer.getSpecie() == PetsAvailable.DOG){
+			if(app2.verifyIfThereRoomsForDOG() == true){
+				
+				System.out.println(app2.addDogInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == PetsAvailable.CAT){
+			if(app2.verifyIfThereRoomsForCAT() == true){
+				
+				System.out.println(app2.addCatInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == PetsAvailable.RABBIT){
+			if(app2.verifyIfThereRoomsForRABBIT() == true){
+				
+				System.out.println(app2.addRabbitInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == PetsAvailable.LIZARD){
+			if(app2.verifyIfThereRoomsForREPTILE() == true){
+				
+				System.out.println(app2.addReptileInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == PetsAvailable.BIRD){
+			if(app2.verifyIfThereRoomsForBIRD() == true){
+				
+				System.out.println(app2.addBirdInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		}
+			
+	}
+	*/
+	
+	public void addPetInPetDaycare(){
+		
+		int option = 0;
+		
+		do{
+			System.out.println("Porfavor llene el siguiente formulario de inscripcion:");
+			System.out.println("- Especie de la mascota: ");
+			System.out.println("( 1 ) PERRO");
+			System.out.println("( 2 ) GATO");
+			System.out.println("( 3 ) CONEJO");
+			System.out.println("( 4 ) REPTIL");
+			System.out.println("( 5 ) AVE");
+			
+			System.out.print("opcion: ");
+			option = sc.nextInt();
+			sc.nextLine();
+			
+			switch(option){
+			case 1:
+			if(ki.verifyIfThereRoomsForDOG() == true){
+				Specie dog = Specie.PERRO;
+				System.out.print("Raza de la mascota: ");
+				String race = sc.nextLine();
+				System.out.print("Nombre de la mascota: ");
+				String namePet = sc.nextLine();
+				System.out.print("Edad de la mascota: ");
+				int agePet = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("===============================");
+				System.out.println("==== DATOS DEL RESPONSABLE ====");
+				System.out.println("===============================\n");
+				System.out.print("ID: ");
+				String idOwner = sc.nextLine();
+				System.out.print("Nombre: ");
+				String nameOwner = sc.nextLine();
+				System.out.print("Telefono: ");
+				String phone = sc.nextLine();
+				System.out.print("Direccion: ");
+				String address = sc.nextLine();
+				System.out.println("===================================");
+				System.out.print("Dias de hospitalizacion: ");
+				int days = sc.nextInt();
+				sc.nextLine();
+
+				
+				PetOwner owner = new PetOwner(idOwner, nameOwner, phone, address);
+				Pet newDog = new Pet(dog, race, namePet, agePet, owner, days);
+				
+				System.out.println(ki.addPet(option, newDog));
+				
+			} else{
+				System.out.println("No hay habitats disponibles para perros");
+			}
+			break;
+			case 2:
+			if(ki.verifyIfThereRoomsForCAT() == true){
+				Specie cat = Specie.GATO;
+				System.out.print("Raza de la mascota: ");
+				String race = sc.nextLine();
+				System.out.print("Nombre de la mascota: ");
+				String namePet = sc.nextLine();
+				System.out.print("Edad de la mascota: ");
+				int agePet = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("===============================");
+				System.out.println("==== DATOS DEL RESPONSABLE ====");
+				System.out.println("===============================\n");
+				System.out.print("ID: ");
+				String idOwner = sc.nextLine();
+				System.out.print("Nombre: ");
+				String nameOwner = sc.nextLine();
+				System.out.print("Telefono: ");
+				String phone = sc.nextLine();
+				System.out.print("Direccion: ");
+				String address = sc.nextLine();
+				System.out.println("===================================");
+				System.out.print("Dias de hospitalizacion: ");
+				int days = sc.nextInt();
+				sc.nextLine();
+				
+				PetOwner owner = new PetOwner(idOwner, nameOwner, phone, address);
+				Pet newCat = new Pet(cat, race, namePet, agePet, owner, days);
+				
+				System.out.println(ki.addPet(option, newCat));
+				
+			} else{System.out.println("No hay habitats disponibles para gatos");}
+			break;
+			case 3:
+			if(ki.verifyIfThereRoomsForRABBIT() == true){
+				Specie rabbit = Specie.CONEJO;
+				System.out.print("Nombre de la mascota: ");
+				String namePet = sc.nextLine();
+				System.out.print("Edad de la mascota: ");
+				int agePet = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("===============================");
+				System.out.println("==== DATOS DEL RESPONSABLE ====");
+				System.out.println("===============================\n");
+				System.out.print("ID: ");
+				String idOwner = sc.nextLine();
+				System.out.print("Nombre: ");
+				String nameOwner = sc.nextLine();
+				System.out.print("Telefono: ");
+				String phone = sc.nextLine();
+				System.out.print("Direccion: ");
+				String address = sc.nextLine();
+				System.out.println("===================================");
+				System.out.print("Dias de hospitalizacion: ");
+				int days = sc.nextInt();
+				sc.nextLine();
+				
+				PetOwner owner = new PetOwner(idOwner, nameOwner, phone, address);
+				Pet newRabbit = new Pet(rabbit, namePet, agePet, owner, days);
+				
+				System.out.println(ki.addPet(option, newRabbit));
+				
+			} else{
+				System.out.println("No hay habitats disponibles para conejos");
+			}
+			break;
+			case 4:
+			if(ki.verifyIfThereRoomsForREPTILE() == true){
+				Specie reptil = Specie.REPTIL;
+				System.out.print("Nombre de la mascota: ");
+				String namePet = sc.nextLine();
+				System.out.print("Edad de la mascota: ");
+				int agePet = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("===============================");
+				System.out.println("==== DATOS DEL RESPONSABLE ====");
+				System.out.println("===============================\n");
+				System.out.print("ID: ");
+				String idOwner = sc.nextLine();
+				System.out.print("Nombre: ");
+				String nameOwner = sc.nextLine();
+				System.out.print("Telefono: ");
+				String phone = sc.nextLine();
+				System.out.print("Direccion: ");
+				String address = sc.nextLine();
+				System.out.println("===================================");
+				System.out.print("Dias de hospitalizacion: ");
+				int days = sc.nextInt();
+				sc.nextLine();
+				
+				PetOwner owner = new PetOwner(idOwner, nameOwner, phone, address);
+				Pet newReptile = new Pet(reptil, namePet, agePet, owner, days);
+				
+				System.out.println(ki.addPet(option, newReptile));
+				
+			} else{
+				System.out.println("No hay habitats disponibles para reptiles");
+			}
+			break;
+			case 5:
+			if(ki.verifyIfThereRoomsForBIRD() == true){
+				Specie bird = Specie.PAJARO;
+				System.out.print("Nombre de la mascota: ");
+				String namePet = sc.nextLine();
+				System.out.print("Edad de la mascota: ");
+				int agePet = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("===============================");
+				System.out.println("==== DATOS DEL RESPONSABLE ====");
+				System.out.println("===============================\n");
+				System.out.print("ID: ");
+				String idOwner = sc.nextLine();
+				System.out.print("Nombre: ");
+				String nameOwner = sc.nextLine();
+				System.out.print("Telefono: ");
+				String phone = sc.nextLine();
+				System.out.print("Direccion: ");
+				String address = sc.nextLine();
+				System.out.println("===================================");
+				System.out.print("Dias de hospitalizacion: ");
+				int days = sc.nextInt();
+				sc.nextLine();							//YA GUARDEMOS Y PROBEMOS LA OPCION UNO DE LA GUARDERIA
+				
+				PetOwner owner = new PetOwner(idOwner, nameOwner, phone, address);
+				Pet newBird = new Pet(bird, namePet, agePet, owner, days);
+				
+				System.out.println(ki.addPet(option, newBird));
+				
+			} else{System.out.println("No hay habitats disponibles para aves");}
+			break;
+			default:
+			option = 0;
+			break;
+		}
+			
+		}while(option == 0);
+		
+	
 		
 		
+	}
+	
+	public void findPetInPetDaycare(){
+		System.out.println("Porfavor ingrese el nombre de la mascota que desea buscar:");
+		System.out.print("Nombre: ");
+		String namePet = sc.nextLine();
+		
+		System.out.println(ki.findPet(namePet));
+		
+	}
+	
+	public void showPetDaycareMap(){
+		
+		System.out.println(ki.showMap());
+	}
+	
+	public void showInfoHabitat(){
+		System.out.println("Porfavor ingrese el identificador del habitat:");
+		System.out.print("ID: ");
+		String idHabitat = sc.nextLine();
+		
+		System.out.println(ki.infoHabitat(idHabitat));
+		
+	}
+	
+	public void showStats(){
+		System.out.println(ki.stats());
+	}
+	
 	
 
-	
 
-	
 
 
 

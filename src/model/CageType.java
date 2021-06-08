@@ -1,6 +1,6 @@
 package model;
 
 public enum CageType{
-	PERRO, GATO, CONEJO, REPTIL, PAJARO
+	HANGING_CAGE, CAGE_IN_LAND
 
 }

@@ -7,7 +7,7 @@ public class ReptileHabitat{
 
 
     public DogHabitat(String id, double length, double width, String material, ReptileTypeH reptileTypeH){
-        super(id, length, width);
+        super(id, length, width, useState);
         this.material = material;
         this.reptileTypeH = reptileTypeH;
     }

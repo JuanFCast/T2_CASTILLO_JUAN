@@ -7,9 +7,8 @@ public abstract class PetHabitat{
     private double width;
     private UseState useState;
     private Pet pet;
-    private int daysToUse;
 
-    public PetHabitat(String id, double length, double width) {
+    public PetHabitat(String id, double length, double width, UseState useState) {
         this.id = id;
         this.length = length;
         this.width = width;
@@ -39,19 +38,19 @@ public abstract class PetHabitat{
         this.useState = useState;
     }
 
-    public void setDaysToUse(int daysToUse) {
-        this.daysToUse = daysToUse;
-    }
+
 
 
     @Override
     public String toString() {
         return "==Habitat==" + 
         		"\nId: " + id + 
+                "\n=================" + 
+                "\nDimensions: " +
         		"\nLong: " + length + 
         		"\nWidth: " + width +
-        		"\nUse State: " + useState +
-        		"\nDays to use:" + daysToUse;
+                "\n=================" + 
+        		"\nUse State: " + useState;
     }
 
     

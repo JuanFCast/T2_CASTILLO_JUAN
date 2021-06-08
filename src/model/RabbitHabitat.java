@@ -5,7 +5,7 @@ public class RabbitHabitat{
     private int amountOfPlants;
 
     public RabbitHabitat(String id, String longHabitat, String width, String plantType, int amountOfPlants) {
-        super(id, longHabitat, width);
+        super(id, length, width, useState);
         this.plantType = plantType;
         this.amountOfPlants = amountOfPlants;
     }

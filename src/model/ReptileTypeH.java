@@ -1,6 +1,6 @@
 package model;
 
 public enum ReptileTypeH{
-	PERRO, GATO, CONEJO, REPTIL, PAJARO
+	FOR_AMPHIBIANS, ONLY_LAND
 
 }

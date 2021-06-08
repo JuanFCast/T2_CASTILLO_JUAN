@@ -7,7 +7,7 @@ public class BirdHabitat{
 
 
     public BirdHabitat(String id, String longHabitat, String width, String height, int capacity, CageType cageType) {
-        super(id, longHabitat, width);
+        super(id, length, width, useState);
         this.height = height;
         this.capacity = capacity;
         this.cageType = cageType;

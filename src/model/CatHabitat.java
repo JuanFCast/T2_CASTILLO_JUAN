@@ -5,7 +5,7 @@ public class CatHabitat extends PetHabitat{
     private double weight;
 
     public CatHabitat(String id, double length, double width, double height, double weight) {
-        super(id, length, width);
+        super(id, length, width, useState);
         this.height = height;
         this.weight = weight;
     }
@@ -16,7 +16,7 @@ public class CatHabitat extends PetHabitat{
     public String toString() {
         return super.toString() +
                "\nHeight: " + height +
-               "\nWeight: " + weight + "\n";
+               "\nMaximum Weight: " + weight + "\n";
     }
 
 }

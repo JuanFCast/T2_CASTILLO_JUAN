@@ -2,6 +2,7 @@ package ui;                                             // javac -cp src src/ui/
 														// java -cp bin ui.Main
 														// javadoc -cp src -subpackages model:ui -d docs/javadoc/                                        
 import model.EmergencyCenter;
+import model.KindegartenCenter;
 import model.Specie;
 import model.ConsultationStatus;
 import model.Priority;
@@ -10,7 +11,10 @@ import model.PetOwner;
 
 import java.util.Scanner;
 
-
+/**
+* @author Juan Felipe Castillo Gomez
+* Description: This is the main class of the TI3
+*/
 public class Main{
 
 
@@ -215,15 +219,11 @@ public class Main{
 
     	System.out.println("MENU DE ACTIVIDADES\n");
         System.out.println("A continuacion selecciona una opcion:");
-		System.out.println("(1) A\u00f1adir un nuevo veterinario");
-		System.out.println("(2) Eliminar un veterinario");
-		System.out.println("(3) Registrar una mascota");
-		System.out.println("(4) Retirar una mascota");
-		System.out.println("(5) Iniciar una consulta");
-		System.out.println("(6) Finalizar una consulta");
-		System.out.println("(7) Numero de mascotas que NO han sido atentidas");
-		System.out.println("(8) Cierre diario del Centro\n");
-
+		System.out.println("(1) Ingresar una mascota a la guarderia");
+		System.out.println("(2) Buscar una mascota en la guarderia");
+		System.out.println("(3) Mostrar mapa de la guarderia");
+		System.out.println("(4) Mostrar informacion sobre un habitat");
+		System.out.println("(5) Mostrar informe de la guarderia");
 		System.out.println("(0) End program\n");
 
 		System.out.print("Opcion: ");
@@ -258,26 +258,6 @@ public class Main{
 				
 				case 5:
 				startConsultation();
-				break;
-
-				case 6:
-				finishConsultation();
-				break;
-
-				case 7:
-				petNumber();
-				break;
-
-				case 8:
-				closeCenter();
-				break;
-
-				case 9:
-				//showPets();
-				break;
-
-				case 10:
-				//showVets();
 				break;
 
 				default:
@@ -708,6 +688,9 @@ public class Main{
 
 	//TAREA INTEGRADORA 3
 
+		
+		
+	
 
 	
 

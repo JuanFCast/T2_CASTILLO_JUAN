@@ -13,6 +13,7 @@ public abstract class PetHabitat{
         this.length = length;
         this.width = width;
         useState = UseState.EMPTY;
+        petHabitat = null;
     }
 
     //getters

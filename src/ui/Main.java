@@ -241,43 +241,43 @@ public class Main{
 
         switch(option){
 				case 1:
-				t2.addVeterinay();
+				addVeterinay();
 				break;
 
 				case 2:
-				t2.deleteVet();
+				deleteVet();
 				break;
 
 				case 3:
-				t2.newPet();
+				newPet();
 				break;
 
 				case 4:
-				t2.removePet();
+				removePet();
 				break;
 				
 				case 5:
-				t2.startConsultation();
+				startConsultation();
 				break;
 
 				case 6:
-				t2.finishConsultation();
+				finishConsultation();
 				break;
 
 				case 7:
-				t2.petNumber();
+				petNumber();
 				break;
 
 				case 8:
-				t2.closeCenter();
+				closeCenter();
 				break;
 
 				case 9:
-				t2.showPets();
+				//showPets();
 				break;
 
 				case 10:
-				t2.showVets();
+				//showVets();
 				break;
 
 				default:

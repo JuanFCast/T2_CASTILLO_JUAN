@@ -319,9 +319,13 @@ public class EmergencyCenter{
 							pets[index].setConsultationStatus(ConsultationStatus.SALIDA_AUTORIZADA);
 							vets[indexVet].setStatus("Available");
 							confirmation = "Has autorizado la salida de la mascota";
-						} else{pets[index].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION); confirmation = "La mascota ha sido trasladada a hospitalizacion";}
+						} else{
+							pets[index].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION); confirmation = "La mascota ha sido trasladada a hospitalizacion";
+						}
 						
-					} else{confirmation = "El veterinario selecionado no esta atendiendo a esa mascota";}
+					} else{
+						confirmation = "El veterinario selecionado no esta atendiendo a esa mascota";
+					}
 				}
 			}
 		}

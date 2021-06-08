@@ -348,7 +348,7 @@ public class KindergartenCenter{
 						if(habitats[i][j].getUseState() == UseState.OCCUPIED_SICK){
 							confirmation += "SICK\n===================================================";
 						} else{
-							confirmation += "FURY\n===================================================";
+							confirmation += "HEALTHY\n===================================================";
 						}
 					}
 

@@ -80,7 +80,8 @@ public class Veterinary{
 		"\nApellidos: " + lastName + 
 		"\nRegistro unico veterinario: " + idVeterinary +
 		"\nEstado del veterinario: " + status + 
-		"\nMascotas atentidas: " + petsAttended;
+		"\nMascotas atentidas: " + petsAttended + 
+		"=======================\n";
 
 		
 		return answer;

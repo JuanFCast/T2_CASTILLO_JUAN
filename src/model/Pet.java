@@ -8,6 +8,7 @@ public class Pet{
 	private int order;
 	private String race;
 	private int dyasStayed;
+	private int petAux;
 
 
 	// relaciones
@@ -60,6 +61,10 @@ public class Pet{
 		this.petOwner = petOwner;
 		dyasStayed = days; 
 	}
+	
+	public Pet(int petAux){
+		this.petAux = petAux;
+	}
 
 
 
@@ -92,7 +97,14 @@ public class Pet{
 	public Veterinary getVeterinary(){
 		return veterinary;
 	}
-
+	
+	public Specie getSpecie(){
+		return specie;
+	}
+	
+	public int getPetAux(){
+		return petAux;
+	}
 
 	//set
 	public void setName(String name){

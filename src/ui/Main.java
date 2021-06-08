@@ -563,7 +563,21 @@ public class Main{
 					
 				}while(option == 0);
 				
-				System.out.println(emergency.finishConsult(indexVet, namePet, option));
+				Pet petToTransfer = emergency.finishConsult(indexVet, namePet, option);
+				
+				
+				if(petToTransfer.getPetAux() == 1){
+					System.out.println("Se ha autorizado la salida de la mascota");
+				} 
+				else if(petToTransfer.getPetAux() == 3)
+
+				{
+					System.out.println("El veterinario escogido no se encuentra atendiendo una mascota con esas caracteristicas");
+				} else if(petToTransfer.getPetAux() == 4){
+					System.out.println("Actualmente no hay mascotas registradas en el centro");
+				} else{
+					transferToPetDaycare(emergency.finishConsult(indexVet, namePet, option));
+				}
 				
 			} else{System.out.println("No existe ningun veterinario con esa identificacion");}
 				System.out.println("===================================");
@@ -690,48 +704,50 @@ public class Main{
 
 	//TAREA INTEGRADORA 3
 
-	/*	
 	public void transferToPetDaycare(Pet petToTransfer){
 		
-		if(petToTransfer.getSpecie() == PetsAvailable.DOG){
-			if(app2.verifyIfThereRoomsForDOG() == true){
+		if(petToTransfer.getSpecie() == Specie.PERRO){
+			if(ki.verifyIfThereRoomsForDOG() == true){
 				
-				System.out.println(app2.addDogInDaycare(petToTransfer));
-				
-			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
-			
-		} else if(petToTransfer.getSpecie() == PetsAvailable.CAT){
-			if(app2.verifyIfThereRoomsForCAT() == true){
-				
-				System.out.println(app2.addCatInDaycare(petToTransfer));
+				System.out.println(ki.addDogInDaycare(petToTransfer));
 				
 			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
 			
-		} else if(petToTransfer.getSpecie() == PetsAvailable.RABBIT){
-			if(app2.verifyIfThereRoomsForRABBIT() == true){
+		} else if(petToTransfer.getSpecie() == Specie.GATO){
+			if(ki.verifyIfThereRoomsForCAT() == true){
 				
-				System.out.println(app2.addRabbitInDaycare(petToTransfer));
-				
-			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
-			
-		} else if(petToTransfer.getSpecie() == PetsAvailable.LIZARD){
-			if(app2.verifyIfThereRoomsForREPTILE() == true){
-				
-				System.out.println(app2.addReptileInDaycare(petToTransfer));
+				System.out.println(ki.addCatInDaycare(petToTransfer));
 				
 			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
 			
-		} else if(petToTransfer.getSpecie() == PetsAvailable.BIRD){
-			if(app2.verifyIfThereRoomsForBIRD() == true){
+		} else if(petToTransfer.getSpecie() == Specie.CONEJO){
+			if(ki.verifyIfThereRoomsForRABBIT() == true){
 				
-				System.out.println(app2.addBirdInDaycare(petToTransfer));
+				System.out.println(ki.addRabbitInDaycare(petToTransfer));
 				
 			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == Specie.REPTIL){
+			if(ki.verifyIfThereRoomsForREPTILE() == true){
+				
+				System.out.println(ki.addReptileInDaycare(petToTransfer));
+				
+			} else{System.out.println("No hay espacio para hospitalizar la mascota");}
+			
+		} else if(petToTransfer.getSpecie() == Specie.PAJARO)
+
+		{
+			if(ki.verifyIfThereRoomsForBIRD() == true){
+				
+				System.out.println(ki.addBirdInDaycare(petToTransfer));
+				
+			} else{
+				System.out.println("No hay espacio para hospitalizar la mascota");
+			}
 			
 		}
 			
 	}
-	*/
 	
 	public void addPetInPetDaycare(){
 		

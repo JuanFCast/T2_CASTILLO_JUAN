@@ -165,7 +165,10 @@ public class EmergencyCenter{
 				
 				text += vets[i].toString();
 				
-			}else{count++;}
+			}else{
+				count++;
+
+			}
 		}
 		
 		if(count == MAX_VETS){text = "------------------------------------------\nNo hay veterinarios registrados\n------------------------------------------\n";}
@@ -304,10 +307,12 @@ public class EmergencyCenter{
 	* @param pib int, the parameter is that the program can only continue if the values are integers.
 	* @return count String, returns a text string with the prediction of 2021 requested by the user.
 	*/
-	public String finishConsult(int indexVet, String namePet, int option){
+	public Pet finishConsult(int indexVet, String namePet, int option){
 		int index = -1;
 		boolean sentinel = false;
-		String confirmation = "";
+		int numberOfReturn = 0;
+		
+		Pet newPet = null;
 		
 		for(int i = 0; i < MAX_PETS && !sentinel; i++){
 			if(pets[i] != null){
@@ -317,20 +322,28 @@ public class EmergencyCenter{
 						sentinel = true;
 						if(option == 1){
 							pets[index].setConsultationStatus(ConsultationStatus.SALIDA_AUTORIZADA);
-							vets[indexVet].setStatus("Available");
-							confirmation = "Has autorizado la salida de la mascota";
+							vets[indexVet].setStatus("Disponible");
+							numberOfReturn = 1;
 						} else{
-							pets[index].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION); confirmation = "La mascota ha sido trasladada a hospitalizacion";
+							pets[index].setConsultationStatus(ConsultationStatus.TRASLADO_A_HOSPITALIZACION);
+							newPet = pets[index];
 						}
 						
 					} else{
-						confirmation = "El veterinario selecionado no esta atendiendo a esa mascota";
+						numberOfReturn = 3;
 					}
 				}
 			}
 		}
 		
-		return confirmation;
+		if(sentinel == false){numberOfReturn = 4;}
+		
+		if(numberOfReturn != 0){
+			newPet = new Pet(numberOfReturn);
+		}
+		
+		
+		return newPet;
 	}
 
 

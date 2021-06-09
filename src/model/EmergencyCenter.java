@@ -6,12 +6,19 @@ public class EmergencyCenter{
 	public int MAX_PETS = 120;
 	private int order = 1;
 	
-	//relaciones
+	
+	/**
+	* Indicates the maximum number of veterinarians  <br>
+	*/
 	private Veterinary[] vets = new Veterinary[MAX_VETS];
+
+	/**
+	* Indicate the maximum number of pets  <br>
+	*/
 	private Pet[] pets = new Pet[MAX_PETS];
 
 
-	//constructor
+	
 	public EmergencyCenter(){
 	}
 
@@ -26,14 +33,18 @@ public class EmergencyCenter{
 
 
 	
-	//Metodos
+	//Methods
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for storing vets
+	* <b> pre:</b> Vets array must be initialized <br>
+	* <b> pos:</b> Adds a vet to the vets array <br>
+	* @param idNumber required to create a vet
+	* @param name required to create a vet
+	* @param lastName required to create a vet
+	* @param idVeterinary required to create a vet
+	* @return String, returns a text string with the confirmation that the vet was added
 	*/
 	public String addVeterinay(String idNumber, String name, String lastName, String idVeterinary){
 		String confirmation = "";
@@ -56,10 +67,10 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for storing eliminate veterinarians
+	* <b> pre:</b> Vets array must be initialized <br>
+	* <b> pos:</b> Adds a vet to the vets array <br>
+	* @param idNumber required to find the vet to remove
 	*/
 	public void deleteVeterinary(String idNumber){
 		boolean sentinel = false;
@@ -77,10 +88,15 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for storing pets
+	* <b> pre:</b> Pets array must be initialized <br>
+	* <b> pos:</b> Adds a pet to the pets array <br>
+	* @param name required to create a pet
+	* @param age required to create a pet
+	* @param specie required to create a pet
+	* @param petOwner required to create a pet
+	* @param symptoms required to create a pet
+	* @param priority required to create a pet
 	*/
 	public void addPet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority){
 		boolean sentinel = false;
@@ -100,10 +116,16 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for storing pets
+	* <b> pre:</b> Pets array must be initialized <br>
+	* <b> pos:</b> Adds a pet to the pets array <br>
+	* @param name required to create a pet
+	* @param age required to create a pet
+	* @param specie required to create a pet
+	* @param petOwner required to create a pet
+	* @param symptoms required to create a pet
+	* @param priority required to create a pet
+	* @param race required to create a pet
 	*/
 	public void addPet(String name, int age, Specie specie, PetOwner petOwner, String symptoms, Priority priority, String race){
 		boolean sentinel = false;
@@ -124,10 +146,11 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for storing remove pets
+	* <b> pre:</b> Vets array must be initialized <br>
+	* <b> pos:</b> Adds a vet to the vets array <br>
+	* @param name required to find the vet to remove
+	* @param idNumber required to find the vet to remove
 	*/
 	public void removePet(String name, String idNumber){
 		boolean sentinel = false;
@@ -151,10 +174,8 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for displaying registered veterinarians
+	* @return String, returns a text string with the information of the veterinarians or on the contrary says that there are no registered veterinarians
 	*/
 	public String showVets(){
 		String text = "-------------\n= VETERINARIOS =\n-------------";
@@ -178,10 +199,11 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for finding a vet
+	* <b> pre:</b> Vets array must be initialized <br>
+	* <b> pos:</b> Adds a vet to the vets array <br>
+	* @param idNumber required to find the vet
+	* @return int, returns the number of the arrangement where the veterinarian we are looking for is located
 	*/
 	public int findVet(String idNumber){
 		int index = -1;
@@ -201,6 +223,13 @@ public class EmergencyCenter{
 	}
 
 
+	/**
+	* Description: This method is responsible for initiating pet inquiries
+	* <b> pre:</b> Vets array and Pets array must be initialized <br>
+	* <b> pos:</b> Choose the values to suit the client <br>
+	* @param index required to find the vet
+	* @return String, returns a confirmation text string
+	*/
 	public String startConsult(int index){
 		String confirmation = "";
 		boolean sentinel = false;
@@ -302,10 +331,13 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is in charge of assigning the state chosen by the veterinarian
+	* <b> pre:</b> Vets array and Pets array must be initialized <br>
+	* <b> pos:</b> Choose the values to suit the client <br>
+	* @param indexVet required to find the pet to modify
+	* @param namePet required to find the pet to modify
+	* @param option required to find the pet to modify
+	* @return Pet, the modified pet returns
 	*/
 	public Pet finishConsult(int indexVet, String namePet, int option){
 		int index = -1;
@@ -348,10 +380,8 @@ public class EmergencyCenter{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method counts the pets that are waiting
+	* @return int, returns the number of pets waiting to be cared for
 	*/
 	public int petsNumber(){
 		int number = 0;
@@ -369,10 +399,8 @@ public class EmergencyCenter{
 	
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is in charge of verifying if the pet arrangement is empty
+	* @return boolean, returns if it is true or false
 	*/
 	public boolean verifyIfPetsIsNull(){
 		int count = 0;

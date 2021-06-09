@@ -1,6 +1,6 @@
 package ui;                                             // javac -cp src src/ui/Main.java -d bin
 														// java -cp bin ui.Main
-														// javadoc -cp src -subpackages model:ui -d docs/javadoc/                                        
+														// javadoc -cp src -subpackages model:ui -d docs/API/                                        
 import model.EmergencyCenter;
 import model.KindergartenCenter;
 import model.Pet;
@@ -72,10 +72,8 @@ public class Main{
 	//Metodos
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for choosing the function to be used
+	* @return int, returns the number that was chosen
 	*/
 	public int showGeneralMenu(){
 		int option;
@@ -93,7 +91,12 @@ public class Main{
 
 
 
-
+	/**
+	* Description: This method chooses the function to implement
+	* <b> pre:</b> Send a value in option <br>
+	* @param option required to create a vet
+	* @return boolean, returns a true or false to see if the program continues
+	*/
 	public boolean functions(int option){
         boolean sentinel = true;
         int election;
@@ -127,10 +130,8 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for returning the option that the user chose
+	* @return int, returns the value that the user entered
 	*/
 	public int emergencyMenu(){
 		int option;
@@ -156,7 +157,12 @@ public class Main{
     	
 	}
 
-
+	/**
+	* Description: This method chooses the function to implement
+	* <b> pre:</b> Send a value in option <br>
+	* @param option required to create a vet
+	* @return boolean, returns a true or false to see if the program continues
+	*/
 	public boolean emergencyFunctions(int option){
         boolean sentinel = true;
 
@@ -212,10 +218,8 @@ public class Main{
 
 
     /**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method is responsible for returning the option that the user chose
+	* @return int, returns the value that the user entered
 	*/
 	public int kindergartenMenu(){
 		int option;
@@ -238,7 +242,12 @@ public class Main{
 	}
 
 
-
+	/**
+	* Description: This method chooses the function to implement
+	* <b> pre:</b> Send a value in option <br>
+	* @param option required to create a vet
+	* @return boolean, returns a true or false to see if the program continues
+	*/
 	public boolean kindergartenFunctions(int option){
         boolean sentinel = true;
 
@@ -276,13 +285,10 @@ public class Main{
 
 
 
-    //TAREA INTEGRADORA 2
+    //TI2
 	
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void addVeterinay(){
 		String idNumber = "", name = "", lastName = "", idVeterinary = "";
@@ -308,10 +314,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void deleteVet(){
 		boolean sentinel = false;
@@ -338,10 +341,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void newPet(){
 		System.out.println("=====================================\n Formato de Registro de Nueva mascota \n=====================================\n");
@@ -425,10 +425,11 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method checks if there is a pet and an owner
+	* <b> pre:</b> Send a value in option <br>
+	* @param petName requires variables to be filled out
+	* @param ownerName requires variables to be filled out
+	* @return boolean, returns a true or false to see if the program continues
 	*/
 	public boolean comprobation(String petName, String ownerName){
 		boolean sentinel = false;
@@ -442,10 +443,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void removePet(){
 		boolean sentinel = false;
@@ -484,10 +482,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void startConsultation(){
 		
@@ -519,10 +514,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void finishConsultation(){
 		String idNumber, namePet;
@@ -588,10 +580,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method calls the methods that are in the other class
 	*/
 	public void petNumber(){
 		System.out.println("-----------------------------------------------------");
@@ -604,10 +593,7 @@ public class Main{
 
 
 	/**
-	* Description: This method is in charge of calculating the projection of the IPC for the year 2021.
-	* pre: The IPC variable must have the values from the table or the values entered by the user. 
-	* @param pib int, the parameter is that the program can only continue if the values are integers.
-	* @return count String, returns a text string with the prediction of 2021 requested by the user.
+	* Description: This method sends the information regarding the methods of the other class
 	*/
 	public void closeCenter(){
 		
@@ -702,8 +688,14 @@ public class Main{
 	}
 
 
-	//TAREA INTEGRADORA 3
+	//TI3
 
+
+	/**
+	* Description: This method is responsible for looking for spaces between the arrays
+	* <b> pre:</b> petToTransfer must be completed <br>
+	* @param petToTransfer required to create a petToTransfer
+	*/
 	public void transferToPetDaycare(Pet petToTransfer){
 		
 		if(petToTransfer.getSpecie() == Specie.PERRO){
@@ -749,6 +741,10 @@ public class Main{
 			
 	}
 	
+
+	/**
+	* Description: This method sends the information regarding the methods of the other class
+	*/
 	public void addPetInPetDaycare(){
 		
 		int option = 0;
@@ -950,6 +946,10 @@ public class Main{
 		
 	}
 	
+
+	/**
+	* Description: This method calls the methods that are in the other class
+	*/
 	public void findPetInPetDaycare(){
 		System.out.println("Porfavor ingrese el nombre de la mascota que desea buscar:");
 		System.out.print("Nombre: ");
@@ -959,11 +959,19 @@ public class Main{
 		
 	}
 	
+
+	/**
+	* Description: This method calls the methods that are in the other class
+	*/
 	public void showPetDaycareMap(){
 		
 		System.out.println(ki.showMap());
 	}
 	
+
+	/**
+	* Description: This method calls the methods that are in the other class
+	*/
 	public void showInfoHabitat(){
 		System.out.println("Porfavor ingrese el identificador del habitat:");
 		System.out.print("ID: ");
@@ -973,6 +981,9 @@ public class Main{
 		
 	}
 	
+	/**
+	* Description: This method calls the methods that are in the other class
+	*/
 	public void showStats(){
 		System.out.println(ki.stats());
 	}

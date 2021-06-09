@@ -48,7 +48,7 @@ public abstract class PetHabitat{
         		"\nId: " + id + 
                 "\n=================" + 
                 "\nDimensions: " +
-        		"\nLong: " + length + 
+        		"\nLength: " + length + 
         		"\nWidth: " + width +
                 "\n=================" + 
         		"\nUse State: " + useState;

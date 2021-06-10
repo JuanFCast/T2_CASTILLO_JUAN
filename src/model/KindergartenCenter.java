@@ -6,33 +6,117 @@ public class KindergartenCenter{
 	private final int COLUMNMATRIX = 5;
 
     //for cats
+
+    /**
+	* Indicates the row of the CatHabitat matrix  <br>
+	*/
 	private static final int MIN_CAT_ROW = 0;
+
+	/**
+	* Indicates the row of the CatHabitat matrix  <br>
+	*/
 	private static final int MAX_CAT_ROW = 2;
+
+	/**
+	* Indicates the column of the CatHabitat matrix  <br>
+	*/
 	private static final int MIN_CAT_COL = 0;
+
+	/**
+	* Indicates the column of the CatHabitat matrix  <br>
+	*/
 	private static final int MAX_CAT_COL = 2;
 
+
 	//for dogs
+
+	/**
+	* Indicates the row of the DogHabitat matrix  <br>
+	*/
 	private static final int MIN_DOG_ROW = 3;
+
+	/**
+	* Indicates the row of the DogHabitat matrix  <br>
+	*/
 	private static final int MAX_DOG_ROW = 5;
+
+	/**
+	* Indicates the column of the DogHabitat matrix  <br>
+	*/
 	private static final int MIN_DOG_COL = 0;
+
+	/**
+	* Indicates the column of the DogHabitat matrix  <br>
+	*/
 	private static final int MAX_DOG_COL = 2;
 
+
 	//for reptiles
+
+	/**
+	* Indicates the row of the ReptileHabitat matrix  <br>
+	*/
 	private static final int MIN_REPTILE_ROW = 0;
+
+	/**
+	* Indicates the row of the ReptileHabitat matrix  <br>
+	*/
 	private static final int MAX_REPTILE_ROW = 1;
+
+	/**
+	* Indicates the column of the ReptileHabitat matrix  <br>
+	*/
 	private static final int MIN_REPTILE_COL = 3;
+
+	/**
+	* Indicates the column of the ReptileHabitat matrix  <br>
+	*/
 	private static final int MAX_REPTILE_COL = 4;
 
+
 	//for rabbits
+
+	/**
+	* Indicates the row of the RabbitHabitat matrix  <br>
+	*/
 	private static final int MIN_RABBIT_ROW = 2;
+
+	/**
+	* Indicates the row of the RabbitHabitat matrix  <br>
+	*/
 	private static final int MAX_RABBIT_ROW = 3;
+
+	/**
+	* Indicates the column of the RabbitHabitat matrix  <br>
+	*/
 	private static final int MIN_RABBIT_COL = 3;
+
+	/**
+	* Indicates the column of the RabbitHabitat matrix  <br>
+	*/
 	private static final int MAX_RABBIT_COL = 4;
 
+
 	//for birds
+
+	/**
+	* Indicates the row of the BirdHabitat matrix  <br>
+	*/
 	private static final int MIN_BIRD_ROW = 4;
+
+	/**
+	* Indicates the row of the BirdHabitat matrix  <br>
+	*/
 	private static final int MAX_BIRD_ROW = 5;
+
+	/**
+	* Indicates the column of the BirdHabitat matrix  <br>
+	*/
 	private static final int MIN_BIRD_COL = 3;
+
+	/**
+	* Indicates the column of the BirdHabitat matrix  <br>
+	*/
 	private static final int MAX_BIRD_COL = 4;
 
 
@@ -44,7 +128,15 @@ public class KindergartenCenter{
 		createAreas();
 	}
 
+
 	//organize habitats
+
+
+	/**
+	* Indicates the positions in the matrix for create each habitat <br>
+	* <b> pre:</b> Habitat's matrix must be initialized <br>
+	* <b> pos:</b> Initialize every habitat of each area <br>
+	*/
 	private void createAreas(){
 		organizeHabitats(MIN_DOG_ROW, MAX_DOG_ROW, MIN_DOG_COL, MAX_DOG_COL, 1);
 		organizeHabitats(MIN_CAT_ROW, MAX_CAT_ROW, MIN_CAT_COL, MAX_CAT_COL, 2);

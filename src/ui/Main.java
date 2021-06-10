@@ -199,13 +199,7 @@ public class Main{
 				closeCenter();
 				break;
 
-				case 9:
-				//showPets();
-				break;
-
-				case 10:
-				//showVets();
-				break;
+				
 
 				default:
 				sentinel = false;
